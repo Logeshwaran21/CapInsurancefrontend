@@ -879,7 +879,7 @@ export default class CreatePolicy extends RX.Component {
     // onChangeNotify = () => {
     //     console.log("notification")
 
-    //   return  fetch('http://localhost:8082/Notification', {
+    //   return  fetch('http://159.65.148.82:8082/Notification', {
     //         method: 'GET',
     //         headers: {
     //             'Accept': 'application/json',

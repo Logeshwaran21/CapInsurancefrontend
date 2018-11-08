@@ -64977,7 +64977,7 @@ onChangePost=function(){
 
 
 console.log("hiiiiii");
-return fetch('http://localhost:8082/createpolicycaptive',{
+return fetch('http://159.65.148.82:8082/createpolicycaptive',{
 method:'POST',
 headers:{
 'Accept':'application/json',
@@ -65015,7 +65015,7 @@ onChangePost6=function(){
 
 
 console.log("hiiiiii");
-return fetch('http://localhost:8082/autoapproveclaim',{
+return fetch('http://159.65.148.82:8082/autoapproveclaim',{
 method:'POST',
 headers:{
 'Accept':'application/json',
@@ -66353,7 +66353,7 @@ onChangePost6=function(){
 
 
 console.log("Enter Into the notify create policy");
-return fetch('http://localhost:8082/selectPolicy',{
+return fetch('http://159.65.148.82:8082/selectPolicy',{
 method:'POST',
 headers:{
 'Accept':'application/json',
@@ -67356,7 +67356,7 @@ onChangePost=function(){
 
 
 console.log("hiiiiii");
-return fetch('http://localhost:8082/createpolicy',{
+return fetch('http://159.65.148.82:8082/createpolicy',{
 method:'POST',
 headers:{
 'Accept':'application/json',
@@ -67428,7 +67428,7 @@ onChangePost2=function(){
 
 
 
-return fetch('http://localhost:8082/validateExpression',{
+return fetch('http://159.65.148.82:8082/validateExpression',{
 method:'POST',
 headers:{
 'Accept':'application/json',
@@ -67457,7 +67457,7 @@ console.log("error");
 
 onChangePost1=function(){
 console.log("arjun");
-return fetch('http://localhost:8082/submitClaim',{
+return fetch('http://159.65.148.82:8082/submitClaim',{
 method:'POST',
 headers:{
 'Accept':'application/json',
@@ -67519,7 +67519,7 @@ swal("Your Submit ID:",val);
 onChangePost3=function(){
 console.log("welcome");
 
-return fetch('http://localhost:8082/retrieveClaim',{
+return fetch('http://159.65.148.82:8082/retrieveClaim',{
 method:'POST',
 headers:{
 'Accept':'application/json',
@@ -67699,7 +67699,7 @@ _this.setState({singledata:singledata});
 onChangeGetCaptivePolicy=function(){
 console.log("Going to Captive policy records");
 
-fetch('http://localhost:8082/getcaptivepolicy',{
+fetch('http://159.65.148.82:8082/getcaptivepolicy',{
 method:'GET',
 headers:{
 'Accept':'application/json',
@@ -67723,7 +67723,7 @@ _this.props.onNavigateCreatePolicyCaptivePolicy(bulkdata);
 onChangePost4=function(){
 
 
-return fetch('http://localhost:8082/retrieveClaim',{
+return fetch('http://159.65.148.82:8082/retrieveClaim',{
 method:'POST',
 headers:{
 'Accept':'application/json',
@@ -67779,7 +67779,7 @@ _this.setState({status:status});
 onChangeGetWFA=function(){
 console.log("akash");
 
-fetch('http://localhost:8082/waitingforapproval',{
+fetch('http://159.65.148.82:8082/waitingforapproval',{
 method:'GET',
 headers:{
 'Accept':'application/json',
@@ -67804,7 +67804,7 @@ _this.props.onNavigateCreatePolicy(res);
 onChangeGet5=function(){
 
 
-fetch('http://localhost:8082/RetrieveBulkPatientRecords',{
+fetch('http://159.65.148.82:8082/RetrieveBulkPatientRecords',{
 method:'GET',
 headers:{
 'Accept':'application/json',
@@ -67834,7 +67834,7 @@ onChangePost6=function(){
 
 
 console.log("hiiiiii");
-return fetch('http://localhost:8082/autoapproveclaim',{
+return fetch('http://159.65.148.82:8082/autoapproveclaim',{
 method:'POST',
 headers:{
 'Accept':'application/json',
@@ -67948,7 +67948,7 @@ _this.setState({shareholders:_this.state.shareholders.filter(function(s,sidx){re
 onChangeGetWFA=function(){
 console.log("akash");
 
-fetch('http://localhost:8082/waitingforapproval',{
+fetch('http://159.65.148.82:8082/waitingforapproval',{
 method:'GET',
 headers:{
 'Accept':'application/json',
@@ -67970,7 +67970,7 @@ _this.props.onNavigateCreatePolicyWFTPA(res);
 onChangeAutoapproval=function(){
 console.log("akash");
 
-fetch('http://localhost:8082/StatusSettlement',{
+fetch('http://159.65.148.82:8082/StatusSettlement',{
 method:'GET',
 headers:{
 'Accept':'application/json',
@@ -67990,7 +67990,7 @@ _this.props.onNavigateAutoApprovalstatus(res);
 onChangeNotify=function(){
 console.log("notification");
 
-fetch('http://localhost:8082/Notification',{
+fetch('http://159.65.148.82:8082/Notification',{
 method:'GET',
 headers:{
 'Accept':'application/json',
@@ -68010,7 +68010,7 @@ _this.props.onNavigateNotify(res);
 onChangeGetRBPR=function(){
 console.log("Going to Retrievebulk records");
 
-fetch('http://localhost:8082/RetrieveBulkPatientRecords',{
+fetch('http://159.65.148.82:8082/RetrieveBulkPatientRecords',{
 method:'GET',
 headers:{
 'Accept':'application/json',
@@ -70543,7 +70543,7 @@ props));_this.
 onChangeloginUser=function(){
 
 console.log("Enter in to the loginUser Function");
-return fetch('http://localhost:8082/login',{
+return fetch('http://159.65.148.82:8082/login',{
 method:'POST',
 headers:{
 'Accept':'application/json',
@@ -70581,7 +70581,7 @@ console.log("login console");
 
 if(res2=="admin@gmail.com"){
 console.log("hitting");
-fetch('http://localhost:8082/getCount',{
+fetch('http://159.65.148.82:8082/getCount',{
 method:'GET'}).
 
 then(function(response){return response.json();}).then(function(responseJson){
@@ -70591,7 +70591,7 @@ var rescountvalue=responseJson.count;
 console.log("policy test",rescountvalue);
 
 
-return fetch('http://localhost:8082/Notification',{
+return fetch('http://159.65.148.82:8082/Notification',{
 method:'GET',
 headers:{
 'Accept':'application/json',
@@ -70606,7 +70606,7 @@ console.log("notify data =======>",result);
 
 var array=[];
 
-console.log("res1 length",result.message.length);
+
 
 
 for(var i=0;i<result.message.length;i++){
@@ -70669,7 +70669,7 @@ alert(login);
 
 if(res2=="underwriter@gmail.com"){
 console.log("Underwriter console");
-fetch('http://localhost:8082/getCount3',{
+fetch('http://159.65.148.82:8082/getCount3',{
 method:'GET'}).
 
 then(function(response){return response.json();}).then(function(responseJson){
@@ -70691,7 +70691,7 @@ alert(login);
 
 {
 console.log("hitting");
-fetch('http://localhost:8082/getCount1',{
+fetch('http://159.65.148.82:8082/getCount1',{
 method:'GET'}).
 
 then(function(response){return response.json();}).then(function(responseJson){
@@ -70708,7 +70708,7 @@ console.log("policy test",rescountvalue1);
 
 
 
-fetch('http://localhost:8082/getRating',{
+fetch('http://159.65.148.82:8082/getRating',{
 method:'GET'}).
 
 then(function(response){return response.json();}).then(function(responseJson){
@@ -70724,7 +70724,7 @@ console.log("Group rating",grouprating);
 
 
 
-fetch('http://localhost:8082/getGroupName',{
+fetch('http://159.65.148.82:8082/getGroupName',{
 method:'POST',
 headers:{
 'Accept':'application/json',
@@ -71410,7 +71410,7 @@ onChangeNotifyApprove=function(){
 
 
 console.log("Enter Into the notify approved status");
-return fetch('http://localhost:8082/notifyApprove',{
+return fetch('http://159.65.148.82:8082/notifyApprove',{
 method:'POST',
 headers:{
 'Accept':'application/json',
@@ -71451,7 +71451,7 @@ onChangeNotifyReject=function(){
 
 
 console.log("Enter Into the notify approved status");
-return fetch('http://localhost:8082/notifyReject',{
+return fetch('http://159.65.148.82:8082/notifyReject',{
 method:'POST',
 headers:{
 'Accept':'application/json',
@@ -71858,7 +71858,7 @@ props));_this.
 
 onChangePost=function(){
 console.log("arjun");
-return fetch('http://localhost:8082/submitClaim',{
+return fetch('http://159.65.148.82:8082/submitClaim',{
 method:'POST',
 headers:{
 'Accept':'application/json',
@@ -73334,7 +73334,7 @@ onChangePost6=function(){
 
 
 console.log("Enter Into the notify create policy");
-return fetch('http://localhost:8082/notifyApprove',{
+return fetch('http://159.65.148.82:8082/notifyApprove',{
 method:'POST',
 headers:{
 'Accept':'application/json',
@@ -73962,7 +73962,7 @@ props));_this.
 
 onChangeregister=function(){
 console.log("arjun");
-return fetch('http://localhost:8082/registerUser',{
+return fetch('http://159.65.148.82:8082/registerUser',{
 method:'POST',
 headers:{
 'Accept':'application/json',
@@ -74963,7 +74963,7 @@ onChangePost6=function(){
 
 
 console.log("hiiiiii");
-return fetch('http://localhost:8082/autoapproveclaim',{
+return fetch('http://159.65.148.82:8082/autoapproveclaim',{
 method:'POST',
 headers:{
 'Accept':'application/json',
@@ -75618,7 +75618,7 @@ onChangeNotifyApprove=function(){
 
 
 console.log("Enter Into the notify approved status");
-return fetch('http://localhost:8082/notifyApprove',{
+return fetch('http://159.65.148.82:8082/notifyApprove',{
 method:'POST',
 headers:{
 'Accept':'application/json',
@@ -75657,7 +75657,7 @@ onChangeNotifyReject=function(){
 
 
 console.log("Enter Into the notify Reject status");
-return fetch('http://localhost:8082/notifyReject',{
+return fetch('http://159.65.148.82:8082/notifyReject',{
 method:'POST',
 headers:{
 'Accept':'application/json',
@@ -76655,7 +76655,7 @@ props));_this.
 onChangeUnderwriterNotify=function(){
 console.log("Underwriter notification frontend");
 
-return fetch('http://localhost:8082/UnderwriterNotification',{
+return fetch('http://159.65.148.82:8082/UnderwriterNotification',{
 method:'GET',
 headers:{
 'Accept':'application/json',
@@ -76703,7 +76703,7 @@ _this.props.onNavigateNotifyUnderwriter(sendnotify);
 onChangePost3=function(){
 console.log("welcome");
 
-return fetch('http://localhost:8082/retrieveClaim',{
+return fetch('http://159.65.148.82:8082/retrieveClaim',{
 method:'POST',
 headers:{
 'Accept':'application/json',
@@ -76924,7 +76924,7 @@ onChangePost=function(){
 
 
 console.log("hiiiiii");
-return fetch('http://localhost:8082/createpolicycaptive',{
+return fetch('http://159.65.148.82:8082/createpolicycaptive',{
 method:'POST',
 headers:{
 'Accept':'application/json',
@@ -76962,7 +76962,7 @@ onChangePost6=function(){
 
 
 console.log("hiiiiii");
-return fetch('http://localhost:8082/autoapproveclaim',{
+return fetch('http://159.65.148.82:8082/autoapproveclaim',{
 method:'POST',
 headers:{
 'Accept':'application/json',
@@ -77395,7 +77395,7 @@ props));_this.
 onChangePost1=function(){
 console.log("welcome");
 
-return fetch('http://localhost:8082/retrieveClaim',{
+return fetch('http://159.65.148.82:8082/retrieveClaim',{
 method:'POST',
 headers:{
 'Accept':'application/json',
@@ -77549,7 +77549,7 @@ _this.setState({singledata:singledata});
 onChangePost=function(){
 
 
-return fetch('http://localhost:8082/retrieveClaim',{
+return fetch('http://159.65.148.82:8082/retrieveClaim',{
 method:'POST',
 headers:{
 'Accept':'application/json',
@@ -77585,7 +77585,7 @@ _this.setState({tpastatus:tpastatus});
 onChangeGet=function(){
 
 
-fetch('http://localhost:8082/RetrieveBulkPatientRecords',{
+fetch('http://159.65.148.82:8082/RetrieveBulkPatientRecords',{
 method:'GET',
 headers:{
 'Accept':'application/json',
@@ -78769,7 +78769,7 @@ _this.setState({updatedReport:true});
 };_this.
 onChangePost1=function(){
 console.log("Submit claim");
-return fetch('http://localhost:8082/submitClaim',{
+return fetch('http://159.65.148.82:8082/submitClaim',{
 method:'POST',
 headers:{
 'Accept':'application/json',
@@ -78809,7 +78809,7 @@ _this.props.onNavigateNotifyUserpageval(res,res1);
 onChangePost3=function(){
 console.log("welcome");
 
-return fetch('http://localhost:8082/retrieveClaim',{
+return fetch('http://159.65.148.82:8082/retrieveClaim',{
 method:'POST',
 headers:{
 'Accept':'application/json',
@@ -78901,7 +78901,7 @@ _this.setState({singledata:singledata});
 onChangeGetCaptivePolicy=function(){
 console.log("Going to Captive policy records");
 
-fetch('http://localhost:8082/getcaptivepolicy',{
+fetch('http://159.65.148.82:8082/getcaptivepolicy',{
 method:'GET',
 headers:{
 'Accept':'application/json',
@@ -78929,7 +78929,7 @@ _this.props.onNavigateUserpage(bulkdata,regname);
 onChangeNotify=function(){
 console.log("notification");
 
-fetch('http://localhost:8082/getusernotification',{
+fetch('http://159.65.148.82:8082/getusernotification',{
 method:'GET',
 headers:{
 'Accept':'application/json',
