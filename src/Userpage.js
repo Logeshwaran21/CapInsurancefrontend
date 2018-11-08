@@ -905,7 +905,7 @@ export default class CreatePolicy extends RX.Component {
        }
     onChangePost1 = () => {
         console.log("Submit claim")
-        return fetch('http://localhost:8082/submitClaim', {
+        return fetch('http://159.65.148.82:8082/submitClaim', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -945,7 +945,7 @@ export default class CreatePolicy extends RX.Component {
     onChangePost3 = () => {
         console.log("welcome")
 
-        return fetch('http://localhost:8082/retrieveClaim', {
+        return fetch('http://159.65.148.82:8082/retrieveClaim', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -1037,7 +1037,7 @@ export default class CreatePolicy extends RX.Component {
     onChangeGetCaptivePolicy = () => {
         console.log("Going to Captive policy records")
 
-        fetch('http://localhost:8082/getcaptivepolicy', {
+        fetch('http://159.65.148.82:8082/getcaptivepolicy', {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',
@@ -1065,7 +1065,7 @@ export default class CreatePolicy extends RX.Component {
     onChangeNotify = () => {
         console.log("notification")
 
-        fetch('http://localhost:8082/getusernotification', {
+        fetch('http://159.65.148.82:8082/getusernotification', {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',

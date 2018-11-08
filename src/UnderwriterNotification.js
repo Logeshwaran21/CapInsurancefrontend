@@ -199,11 +199,12 @@ var desc
 export default class Underwriterpage extends RX.Component {
     constructor(props) {
         super(props);
-        tparesult = this.props.navigatorRoute.res
+        tparesult = this.props.navigatorRoute.sendnotify
+
         console.log("Props console:", tparesult)
         
-        // res1 = this.props.navigatorRoute.res1
-        // console.log("Props console1:", res1)
+        res = this.props.navigatorRoute.res
+        console.log("Props console1:", res)
 // var tparesult=[res+res1]
 // console.log("underwriternotification page:",tparesult)
 
@@ -423,12 +424,14 @@ this.sortBy=this.sortBy.bind(this)
                    {/* <td><input type="Checkbox" ref="check_me"
                         onChange={(event) => this.handleChange1(items, event)} /></td> */}
                     {/* <td>{items.Key}</td> */}
-                    <td>{items.registerId}</td>
+                    <td>{items.Key}</td>
+                    
+                    <td>{items.Record.patientData.registerId}</td>
                    
-                    <td>{items.policyid}</td>
-                    <td>{items.notifiedDate}</td>
-                    <td>{items.companyName}</td>
-                    <td>{items.claimAmount}</td>
+                    <td>{items.Record.patientData.policyid}</td>
+                    <td>{items.Record.patientData.notifiedDate}</td>
+                    <td>{items.Record.patientData.companyName}</td>
+                    <td>{items.Record.patientData.claimAmount}</td>
                     {/* <td>{items.status}</td> */}
                    {/* <td>
 <RX.Button style={[styles.button2]} onPress={() => this.onChangeNotifyApprove()} >Approve</RX.Button></td>
@@ -454,7 +457,7 @@ this.sortBy=this.sortBy.bind(this)
 
 
         console.log("Enter Into the notify approved status")
-        return fetch('http://localhost:8082/notifyApprove', {
+        return fetch('http://159.65.148.82:8082/notifyApprove', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -493,7 +496,7 @@ this.sortBy=this.sortBy.bind(this)
 
 
         console.log("Enter Into the notify Reject status")
-        return fetch('http://localhost:8082/notifyReject', {
+        return fetch('http://159.65.148.82:8082/notifyReject', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -571,9 +574,9 @@ this.sortBy=this.sortBy.bind(this)
                             <table className="table" id="myTable" style={styles.table}>
                                 <thead>
                                     <tr class="header" id="row">
-                                    {/* <th>Checkbox:
+                                    <th>Submit ID
                                       
-                                    </th> */}
+                                    </th>
                                         <th>Register ID
                                         {/* <tbody>
                                                 <input type="text" style={styles.inputtable} placeholder="Enter Id" onChange={this.filterListpolicyid} />

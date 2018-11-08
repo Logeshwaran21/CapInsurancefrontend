@@ -29,6 +29,13 @@ const styles = {
         color: 'white',
 
     }),
+    navwelcomehome: RX.Styles.createTextStyle({
+        fontSize: 15,
+        marginLeft: 1000,
+        marginTop: -22,
+        color: 'white',
+
+    }),
     navwelcome3: RX.Styles.createTextStyle({
         fontSize: 15,
         marginLeft: 982,
@@ -440,7 +447,7 @@ export default class CreatePolicy extends RX.Component {
 
 
         console.log("Enter Into the notify create policy")
-        return fetch('http://localhost:8082/selectPolicy', {
+        return fetch('http://159.65.148.82:8082/selectPolicy', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -507,10 +514,13 @@ export default class CreatePolicy extends RX.Component {
 
             <RX.ScrollView style={styles.scroll}>
                 <RX.View style={styles.navcontainer}>
-                    <RX.Image source={'./src/img/rqlogo.png'} style={[styles.navrqlogo]} />
+                    <RX.Image source={'./src/img/RapidQube logo-01.png'} style={[styles.navrqlogo]} />
                     <RX.Text style={styles.navwelcome}>
                         <b>CAPTIVE INSURANCE</b>
                     </RX.Text>
+                    <RX.Button style={styles.navwelcomehome} onPress={this.props.onNavigateusernotifyhome}>
+                        <b>Home</b>
+                    </RX.Button>
                     <RX.Button style={styles.navwelcome2} onPress={this.props.onNavigateusernotifylogout}>
                         <b>Logout</b>
                     </RX.Button>

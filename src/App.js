@@ -103,7 +103,7 @@ export default class App extends RX.Component {
         this._onPressUnderwriterNotification = this._onPressUnderwriterNotification.bind(this);
         this._onPressUnderwriterhome = this._onPressUnderwriterhome.bind(this);
         this._onPressUnderwriterNotificationlogout = this._onPressUnderwriterNotificationlogout.bind(this);
-        
+        this._onPressAdminpagehome = this._onPressAdminpagehome.bind(this);
     }
 
     componentDidMount() {
@@ -173,16 +173,16 @@ export default class App extends RX.Component {
                 return <Login onNavigateLogin={this._onPressLogin} onNavigateUnderwriterpagelogin={this._onPressUnderwriterpagelogin} onNavigateLoginUser={this._onPressLoginUser} onNavigateLoginHome={this._onPressLoginHome} navigatorRoute={navigatorRoute} />
 
             case NavigationRouteId.Notification:
-                return <Notification onNavigateNotification={this._onPressNotification}  onNavigateadminnotifylogout={this._onPressadminnotifylogout} navigatorRoute={navigatorRoute} />
+                return <Notification onNavigateNotification={this._onPressNotification} onNavigateAdminpagehome={this._onPressAdminpagehome} onNavigateadminnotifylogout={this._onPressadminnotifylogout} navigatorRoute={navigatorRoute} />
 
             case NavigationRouteId.CaptivePolicy:
-                return <CaptivePolicy onNavigateCaptivePolicy={this._onPressCaptivePolicy} onNavigateusernotifylogout={this._onPressusernotifylogout} onNavigateusernotifyhome={this._onPressusernotifyhome} navigatorRoute={navigatorRoute} />
+                return <CaptivePolicy onNavigateCaptivePolicy={this._onPressCaptivePolicy}  onNavigateusernotifylogout={this._onPressusernotifylogout} onNavigateusernotifyhome={this._onPressusernotifyhome} navigatorRoute={navigatorRoute} />
 
             case NavigationRouteId.AdminPage:
-                return <AdminPage onNavigateAdminPage={this._onPressAdminPage} onNavigateAdminpagelogout={this._onPressAdminpagelogout} onNavigateNotifyAdminPage={this._onPressNotifyAdminPage} navigatorRoute={navigatorRoute} />
+                return <AdminPage onNavigateAdminPage={this._onPressAdminPage}  onNavigateAdminpagelogout={this._onPressAdminpagelogout} onNavigateNotifyAdminPage={this._onPressNotifyAdminPage} navigatorRoute={navigatorRoute} />
 
             case NavigationRouteId.Userpage:
-                return <Userpage onNavigateUserpage={this._onPressUserpage} onNavigateUsernotify={this._onPressUsernotify} onNavigateUserpagelogout={this._onPressUserpagelogout} navigatorRoute={navigatorRoute} />
+                return <Userpage onNavigateUserpage={this._onPressUserpage}  onNavigateUsernotify={this._onPressUsernotify} onNavigateUserpagelogout={this._onPressUserpagelogout} navigatorRoute={navigatorRoute} />
 
             case NavigationRouteId.Underwriterpage:
                 return <Underwriterpage onNavigateUnderwriterpage={this._onPressUnderwriterpage}  onNavigateUnderwriterpagelogout={this._onPressUnderwriterpagelogout} onNavigateNotifyUnderwriter={this._onPressNotifyUnderwriter} navigatorRoute={navigatorRoute} />
@@ -228,15 +228,16 @@ export default class App extends RX.Component {
             }
         });
     }
-    _onPressNotifyUnderwriter(res,res1) {
+    _onPressNotifyUnderwriter(sendnotify,res) {
         // this._navigator.pop();
-        console.log("app notify RES", res)
-        console.log("app notify RES1", res1)
+       
+        console.log("app notify sendnotify", sendnotify)
+         console.log("app notify RES", res)
         this._navigator.push({
             routeId: NavigationRouteId.UnderwriterNotification,
             // sceneConfigType: "Fade",
             res: res,
-            res1:res1,
+            sendnotify:sendnotify,
             overflow:"hidden",
             customSceneConfig: {
                 hideShadow: true
@@ -339,6 +340,19 @@ export default class App extends RX.Component {
         console.log("app", res)
         this._navigator.push({
             routeId: NavigationRouteId.CreatePolicy,
+            // sceneConfigType: "Fade",
+            res: res,
+            overflow:"hidden",
+            customSceneConfig: {
+                hideShadow: true
+            }
+        });
+    }
+    _onPressAdminpagehome(res) {
+        // this._navigator.pop();
+        console.log("app", res)
+        this._navigator.push({
+            routeId: NavigationRouteId.AdminPage,
             // sceneConfigType: "Fade",
             res: res,
             overflow:"hidden",

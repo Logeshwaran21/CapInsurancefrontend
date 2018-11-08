@@ -850,7 +850,7 @@ export default class CreatePolicy extends RX.Component {
     onChangeUnderwriterNotify = () => {
         console.log("Underwriter notification frontend")
 
-      return  fetch('http://localhost:8082/UnderwriterNotification', {
+      return  fetch('http://159.65.148.82:8082/UnderwriterNotification', {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',
@@ -861,21 +861,24 @@ export default class CreatePolicy extends RX.Component {
 
         }).then((result) => result.json()).then((result) => {
             console.log("Underwriter notify data =======>", result)
+            var sendnotify=result.message
+            console.log("send notify",sendnotify)
             // var res = result.message[0]
-            var array = []
-            var array1 = []
-            // var res1 = result.message.length
-            console.log("res1 length", result.message.length)
-            console.log(result.message[0].Record.patientData)
-            console.log(result.message[0].Key)
-            // function search(statusKey, result) {
-            for (var i = 0; i < result.message.length; i++) {
+            // var array = []
+            // var array1 = []
+            // // var res1 = result.message.length
+            // console.log("res1 length", result.message.length)
+            // console.log(result.message[0].Record.patientData)
+            // console.log(result.message[0].Key)
+            // // function search(statusKey, result) {
+            // for (var i = 0; i < result.message.length; i++) {
                
-                    console.log("welcome")
-                    array.push(result.message[i].Record.patientData)
-                    console.log("key===>")
-                    array1.push(result.message[i].Key)
-            }
+            //         console.log("welcome")
+            //         array.push(result.message[i].Record.patientData)
+            //         console.log("key===>")
+            //         array1.push(result.message[i].Key)
+            //         array.push(array1[i])
+            // }
         //     for (var i = 0; i < result.message.length; i++) {
                
         //         console.log("key===>")
@@ -884,7 +887,7 @@ export default class CreatePolicy extends RX.Component {
         // }
             
 
-            this.props.onNavigateNotifyUnderwriter(array,array1)
+            this.props.onNavigateNotifyUnderwriter(sendnotify)
            
         })
 
@@ -895,7 +898,7 @@ export default class CreatePolicy extends RX.Component {
     onChangePost3 = () => {
         console.log("welcome")
 
-        return fetch('http://localhost:8082/retrieveClaim', {
+        return fetch('http://159.65.148.82:8082/retrieveClaim', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -1116,7 +1119,7 @@ export default class CreatePolicy extends RX.Component {
 
 
         console.log("hiiiiii")
-        return fetch('http://localhost:8082/createpolicycaptive', {
+        return fetch('http://159.65.148.82:8082/createpolicycaptive', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -1154,7 +1157,7 @@ console.log("testing",responseJson)
 
         
         console.log("hiiiiii")
-                  return  fetch('http://localhost:8082/autoapproveclaim', {
+                  return  fetch('http://159.65.148.82:8082/autoapproveclaim', {
                         method: 'POST',
                         headers: {
                             'Accept': 'application/json',

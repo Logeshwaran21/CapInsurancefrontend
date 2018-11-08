@@ -477,7 +477,7 @@ export default class RegisterPage extends RX.Component{
     }
     onChangeregister = () => {
         console.log("arjun")
-        return fetch('http://localhost:8082/registerUser', {
+        return fetch('http://159.65.148.82:8082/registerUser', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',

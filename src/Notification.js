@@ -31,6 +31,13 @@ const styles = {
         color: 'white',
 
     }),
+    navwelcomehome: RX.Styles.createTextStyle({
+        fontSize: 15,
+        marginLeft: 1000,
+        marginTop: -22,
+        color: 'white',
+
+    }),
     button1: RX.Styles.createButtonStyle({
         backgroundColor: 'rgb(8, 37, 103)',
         borderWidth: 1,
@@ -392,7 +399,7 @@ this.sortBy=this.sortBy.bind(this)
            
                 //console.log("welcome")
         
-                // return fetch('http://localhost:8082/retrieveClaim', {
+                // return fetch('http://159.65.148.82:8082/retrieveClaim', {
                 //     method: 'POST',
                 //     headers: {
                 //         'Accept': 'application/json',
@@ -488,7 +495,7 @@ this.sortBy=this.sortBy.bind(this)
 
 
     //     console.log("Enter Into the notify approved  buttonstatus")
-    //     return fetch('http://localhost:8082/approvebutton', {
+    //     return fetch('http://159.65.148.82:8082/approvebutton', {
     //         method: 'POST',
     //         headers: {
     //             'Accept': 'application/json',
@@ -525,7 +532,7 @@ this.sortBy=this.sortBy.bind(this)
 
 
         console.log("Enter Into the notify approved status")
-        return fetch('http://localhost:8082/notifyApprove', {
+        return fetch('http://159.65.148.82:8082/notifyApprove', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -566,7 +573,7 @@ this.sortBy=this.sortBy.bind(this)
 
 
         console.log("Enter Into the notify approved status")
-        return fetch('http://localhost:8082/notifyReject', {
+        return fetch('http://159.65.148.82:8082/notifyReject', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -619,10 +626,13 @@ this.sortBy=this.sortBy.bind(this)
 
             <RX.ScrollView style={styles.scroll}>
                 <RX.View style={styles.navcontainer}>
-                    <RX.Image source={'./src/img/rqlogo.png'} style={[styles.navrqlogo]} />
+                    <RX.Image source={'./src/img/RapidQube logo-01.png'} style={[styles.navrqlogo]} />
                     <RX.Text style={styles.navwelcome}>
                     <b>CAPTIVE INSURANCE</b>
                     </RX.Text>
+                    <RX.Button style={styles.navwelcomehome} onPress={this.props.onNavigateAdminpagehome}>
+                        <b>Home</b>
+                    </RX.Button>
                     <RX.Button style={styles.navwelcome2} onPress={this.props.onNavigateadminnotifylogout}>
                         <b>Logout</b>
                     </RX.Button>

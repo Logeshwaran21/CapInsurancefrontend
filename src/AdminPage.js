@@ -934,7 +934,7 @@ export default class CreatePolicy extends RX.Component {
 
 
         console.log("hiiiiii")
-        return fetch('http://localhost:8082/createpolicycaptive', {
+        return fetch('http://159.65.148.82:8082/createpolicycaptive', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -972,7 +972,7 @@ console.log("testing",responseJson)
 
         
         console.log("hiiiiii")
-                  return  fetch('http://localhost:8082/autoapproveclaim', {
+                  return  fetch('http://159.65.148.82:8082/autoapproveclaim', {
                         method: 'POST',
                         headers: {
                             'Accept': 'application/json',
@@ -1161,11 +1161,11 @@ console.log("testing",responseJson)
 
                                                         <div class="well well-sm well-primary" style={styles.useit}>
                                                             <h4><b>Use these values only</b></h4>
-                                                            <li>ClaimAmount</li>
-                                                            <li>TotalClaim</li>
-                                                            <li>AmountPaid</li>
-                                                            <li>Suminsured</li>
-                                                            <li>ValidateAmount</li>
+                                                            <li>claimAmount</li>
+                                                            <li>totalClaim</li>
+                                                            <li>amountPaid</li>
+                                                            <li>sumInsured</li>
+                                                            <li>validateAmount</li>
                                                             <div class="well well-sm well-primary" style={styles.opeartorspanel}>
                                                                 <h4><b>Use these Operators only</b></h4>
                                                                 <div class="row">
