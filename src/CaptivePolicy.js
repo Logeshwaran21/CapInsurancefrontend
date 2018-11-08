@@ -37,8 +37,8 @@ const styles = {
         color: 'white',
         borderWidth: 1,
         borderRadius: 8,
-        width:64,
-        textAlign:"center"
+        width: 64,
+        textAlign: "center"
 
     }),
     button1: RX.Styles.createButtonStyle({
@@ -175,13 +175,17 @@ var responseJson
 var result
 var products
 var filterdata
+var registername;
 export default class CreatePolicy extends RX.Component {
     constructor(props) {
         super(props);
         gettingresult = this.props.navigatorRoute.res
-         propsresult = gettingresult.message
-
+        propsresult = gettingresult.message
         console.log("Props console:", propsresult)
+
+        registername = this.props.navigatorRoute.regname
+        console.log("Captive page console: reg name", registername)
+        //propsresult = gettingresult.message
 
 
         // var allressult = propsresult.Record
@@ -190,7 +194,8 @@ export default class CreatePolicy extends RX.Component {
         this.state = {
             search: '',
             propsresult: propsresult,
-            items: []
+            items: [],
+            registername: registername
             // products: [{ id: 1, title: 'Etherum', body: '123' }, { id: 2, title: 'Hyperledger', body: '123' },
             // { id: 3, title: 'Blockchain', body: '123' }, { id: 4, title: 'composer', body: '123' }]
             //propsresult: propsresult
@@ -313,27 +318,27 @@ export default class CreatePolicy extends RX.Component {
         if (event.target.checked == true) {
 
 
-            var policyid = JSON.stringify(data.Key)
+            var policyid = data.Key
             this.setState({ policyid: policyid })
             console.log("policyid console", policyid)
 
-            var policyName = JSON.stringify(data.Record.policyName)
+            var policyName = data.Record.policyName
             this.setState({ policyName: policyName })
             console.log("policyName console", policyName)
 
-            var policycatagory = JSON.stringify(data.Record.policycatagory)
+            var policycatagory = data.Record.policycatagory
             this.setState({ policycatagory: policycatagory })
             console.log("policycatagory console", policycatagory)
 
-            var rules = JSON.stringify(data.Record.rules)
+            var rules = data.Record.rules
             this.setState({ rules: rules })
             console.log("rules console", rules)
 
-            var policypercentage = JSON.stringify(data.Record.policypercentage)
+            var policypercentage = data.Record.policypercentage
             this.setState({ policypercentage: policypercentage })
             console.log("policypercentage console", policypercentage)
 
-            var inputradio = JSON.stringify(data.Record.inputradio)
+            var inputradio = data.Record.inputradio
             this.setState({ inputradio: inputradio })
             console.log("inputradio console", inputradio)
         } else {
@@ -341,7 +346,7 @@ export default class CreatePolicy extends RX.Component {
         }
 
 
-        //console.log("i ambeing called" + JSON.stringify(data.policyid) + event.target.checked)
+        //console.log("i ambeing called" + data.policyid)+ event.target.checked)
 
         //  alert(items.policyid)
         // if (this.refs.check_me.checked == true) {
@@ -379,7 +384,7 @@ export default class CreatePolicy extends RX.Component {
                     <td>{items.Record.rules}</td>
                     <td>{items.Record.policypercentage}</td>
                     <td>{items.Record.inputradio}</td>
-                  
+
                 </tr>
 
 
@@ -440,39 +445,45 @@ export default class CreatePolicy extends RX.Component {
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
- 
+
             },
- 
+
             body: JSON.stringify({
- 
+
                 "policyid": this.state.policyid,
                 "policyName": this.state.policyName,
                 "policycatagory": this.state.policycatagory,
                 "rules": this.state.rules,
                 "policypercentage": this.state.policypercentage,
                 "inputradio": this.state.inputradio,
- 
- 
+                "registername": this.state.registername
+
+
+
             }),
         }).then((res) => res.json()).then((responseJson) => {
- 
-            var res = responseJson;
+
+            var res = responseJson
             console.log("response", res)
             var res1 = res.result.message;
- 
+            var resvar = responseJson.result.result.policyid
+            console.log("--------->", resvar)
+
             // var responseJson = JSON.stringify(res)
             console.log("Message console", res1)
             swal(res1)
+            //this.props.navigation.navigate('Adminpage', { resvar })
+            //this.props.onNavigateuserpolicyid(resvar)
             // var rescount = res.result.result.count
             // console.log("Count console notification", rescount)
             // this.props.onNavigateCaptivePolicy(rescount)
             // console.log("response", res)
             // this.props.onNavigateCaptivePolicy(res)
- 
+
         }).catch(function () {
             console.log("error");
         });
- 
+
     }
 
 
@@ -515,7 +526,7 @@ export default class CreatePolicy extends RX.Component {
                         <b>Submit</b>
                     </RX.Button> */}
                     <RX.Button
-                       style={styles.navwelcome3}
+                        style={styles.navwelcome3}
 
                         onPress={() => this.onChangePost6()}
                     >Submit</RX.Button>

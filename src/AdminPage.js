@@ -808,15 +808,29 @@ const pickerItems2 = [
 export default class CreatePolicy extends RX.Component {
     constructor(props) {
         super(props);
-        res = this.props.navigatorRoute.res
+
+        regnamevalue = this.props.navigatorRoute.res
+        console.log("enter in to the admin page:res", regnamevalue)
+
+        res = this.props.navigatorRoute.resval
+        console.log("enter into createpolicy", res)
+
+        res1 = this.props.navigatorRoute.res1
+        console.log("enter into createpolicy", res1)
+
         Count = this.props.navigatorRoute.rescountvalue
         console.log("enter into createpolicy", Count)
+
+        arraystatus = this.props.navigatorRoute.array
+       console.log("enter in to the admin page:arraystatus", arraystatus)
+
         this.state = {
             name: '',
             shareholders: [{ name: '' }],
             selectedValue: "",
             // registeredname: registeredname,
-            Count: Count
+            Count: Count,
+            
 
         };
         this._translationValue = RX.Animated.createValue(-100);
@@ -862,25 +876,25 @@ export default class CreatePolicy extends RX.Component {
     }
 
 
-    onChangeNotify = () => {
-        console.log("notification")
+    // onChangeNotify = () => {
+    //     console.log("notification")
 
-      return  fetch('http://localhost:8082/Notification', {
-            method: 'GET',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
+    //   return  fetch('http://localhost:8082/Notification', {
+    //         method: 'GET',
+    //         headers: {
+    //             'Accept': 'application/json',
+    //             'Content-Type': 'application/json'
 
-            }
+    //         }
 
 
-        }).then((result) => result.json()).then((result) => {
-            console.log("notify data =======>", result)
-            var res = result.message
-            this.props.onNavigateNotifyAdminPage(res)
-        })
+    //     }).then((result) => result.json()).then((result) => {
+    //         console.log("notify data =======>", result)
+    //         var res = result.message
+    //         this.props.onNavigateNotifyAdminPage(res)
+    //     })
 
-    }
+    // }
     //==================================Radio Button function start================================
     setvalue(event) {
         this.setState({
@@ -890,6 +904,14 @@ export default class CreatePolicy extends RX.Component {
     }
     //===================================Radio Button function END=================================
     //==============================================Rules creation start========================
+
+    onChangeNotify = () => {
+        console.log("Enter in the admin notification page")
+        this.props.onNavigateNotifyAdminPage(arraystatus)
+ 
+    }
+
+
     onChangepolicyName = (value) => {
         this.setState({ policyName: value });
         console.log(this.state.policyName, "policyName");
@@ -961,7 +983,7 @@ console.log("testing",responseJson)
                         body: JSON.stringify({
    
                         "submitID":this.state.submitID,
-                        "status":this.state.status1,
+                        "status":this.state.status,
                         "message":this.state.message,
                         "AmountuserHavetopay":this.state.AmountuserHavetopay,
                         "AmountPayerWouldPay":this.state.AmountPayerWouldPay,
@@ -1013,7 +1035,7 @@ console.log("testing",responseJson)
         return (
             <RX.ScrollView style={styles.scroll}>
                 <RX.View style={styles.navcontainer}>
-                    <RX.Image source={'./src/img/rqlogo.png'} style={[styles.navrqlogo]} />
+                    <RX.Image source={'./src/img/RapidQube logo-01.png'} style={[styles.navrqlogo]} />
                     <RX.Text style={styles.navwelcome}>
                         <b>CAPTIVE INSURANCE</b>
                     </RX.Text>
@@ -1026,7 +1048,7 @@ console.log("testing",responseJson)
                                        <span class="sr-only">unread messages</span>
                                    </button> */}
                     <RX.Text style={styles.navwelcome1}>
-                        <b> {res}</b>
+                        <b> {regnamevalue}</b>
                     </RX.Text>
                     <RX.Button style={styles.navwelcome2} onPress={this.props.onNavigateAdminpagelogout}>
                         <b>Logout</b>
@@ -1044,7 +1066,7 @@ console.log("testing",responseJson)
                                     <li class="fa fa-lg fa-globe" onClick={() => this.policyids()} ><a style={{ color: "white", font: 'ProximaNova-Regular', fontSize: 14 }}><b>Create Policy</b><span class="sr-only">(current)</span></a></li>
                                     {/* <li onClick={() => this.onChangeNotify()} ><a style={{ color: "white", font: 'ProximaNova-Regular', fontSize: 14 }}><b>Notifications</b><span class="sr-only">(current)</span></a></li> */}
                                   
-                                    <li onClick={() => this.tpaApprove()} ><a style={{ color: "white",font:'ProximaNova-Regular',fontSize:14 }}><b>TPA Approval</b><span class="sr-only">(current)</span></a></li>
+                                    {/* <li onClick={() => this.tpaApprove()} ><a style={{ color: "white",font:'ProximaNova-Regular',fontSize:14 }}><b>TPA Approval</b><span class="sr-only">(current)</span></a></li> */}
                                     {/* <button type="button" class="btn btn-primary" onClick={() => this.onChangeNotify()}>
                                         Notification <span class="badge badge-light">{this.state.Count}</span>
                                         <span class="sr-only">unread messages</span>

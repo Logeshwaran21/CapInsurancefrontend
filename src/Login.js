@@ -474,14 +474,105 @@ export default class Login extends RX.Component {
                     console.log("policy test", rescountvalue)
                     // swal("Policy created succesfully" + "\n", "Policy Number:" + "" + res1)
                     //console.log("response", responseJson)
+                    return fetch('http://localhost:8082/Notification', {
+                        method: 'GET',
+                        headers: {
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json'
+ 
+                        }
+ 
+ 
+                    }).then((result) => result.json()).then((result) => {
+                        console.log("notify data =======>", result)
+                        // var rs1 = result.length
+                        // console.log("rs1 length", rs1)
+                        var array = []
+                        // var res1 = result.message.length
+                        console.log("res1 length", result.message.length)
+                        //console.log(result.message[0].Record.status)
+                        // function search(statusKey, result) {
+                        for (var i = 0; i < result.message.length; i++) {
+ 
+                            //var valuemessage = result.message[i]
+ 
+                            if (console.log("login sucessfully")) {
+ 
+                            } else (result.message[i].Record.status == "Initiated")
+                            {
+                                console.log("welcome")
+                                array.push(result.message[i].Record)
+                                console.log("login sucessfully")
+ 
+                            }
+                        }
+                        //}
+ 
+ 
+                        console.log("===>", array)
+                        //let obj = result.find(o => o.status === 'intiated');
+                        // console.log()
+                        // var search
+                        // var resultObject = search("PCI283", res1);
+                        // console.log("enter in to the login page:resultObject", resultObject)
+ 
+                        var resval = res1.Record
+                        console.log("login page:res", res)
+                        this.props.onNavigateLogin(res, resval, rescountvalue, array)
+                        alert(login)
+                    })
+ 
+                    // fetch('http://localhost:8082/getstatus', {
+                    //     method: 'POST',
+                    //     headers: {
+                    //         'Accept': 'application/json',
+                    //         'Content-Type': 'application/json'
+ 
+                    //     },
+ 
+                    //     body: JSON.stringify({
+ 
+                    //         "status": "Initiated",
+                    //     }),
+                    // }).then((response) => response.json()).then((responseJson) => {
+ 
+                    //     status1 = responseJson
+                    //     console.log("group name console", status1)
+ 
+                    //     this.props.onNavigateLogin(res, rescountvalue, groupname, status1)
+                    //     alert(login)
+                    // })
+
+                    //window.location = "AdminPage.js";
+                    // this.props.onNavigateLogin(res, rescountvalue, groupname)
+                    // alert(login)
+                })
+
+            } 
+            
+            else if(res2=="underwriter@gmail.com"){
+                console.log("Underwriter console")
+                fetch('http://localhost:8082/getCount3', {
+                    method: 'GET',
+
+                }).then((response) => response.json()).then((responseJson) => {
+
+                    var rescountvalue = responseJson.count3;
+                    // var responseJson = JSON.stringify(res)
+                    console.log("policy test", rescountvalue)
+                    // swal("Policy created succesfully" + "\n", "Policy Number:" + "" + res1)
+                    //console.log("response", responseJson)
 
 
                     //window.location = "AdminPage.js";
-                    this.props.onNavigateLogin(res, rescountvalue, groupname)
+                    this.props.onNavigateUnderwriterpagelogin(rescountvalue,res)
                     alert(login)
                 })
-
-            } else {
+                // this.transitionToRoute('underwriter'); 
+               }
+            
+            
+            else {
                 console.log("hitting")
                 fetch('http://localhost:8082/getCount1', {
                     method: 'GET',
@@ -496,9 +587,26 @@ export default class Login extends RX.Component {
 
 
                     //window.location = "AdminPage.js";
-                    this.props.onNavigateLoginUser(res, rescountvalue1)
-                    alert(login)
-                })
+                    // this.props.onNavigateLoginUser(res, rescountvalue1)
+                    // alert(login)
+               
+
+                fetch('http://localhost:8082/getRating', {
+                    method: 'GET',
+
+                }).then((response) => response.json()).then((responseJson) => {
+
+                    var grouprating = responseJson.rating
+                    // var responseJson = JSON.stringify(res)
+                    console.log("Group rating", grouprating)
+                    // swal("Policy created succesfully" + "\n", "Policy Number:" + "" + res1)
+                    //console.log("response", responseJson)
+
+
+                    //window.location = "AdminPage.js";
+                    // this.props.onNavigateLoginUser(res,rescountvalue1,grouprating)
+                    // alert(login)
+               
                 fetch('http://localhost:8082/getGroupName', {
                     method: 'POST',
                     headers: {
@@ -513,16 +621,18 @@ export default class Login extends RX.Component {
                     }),
                 }).then((response) => response.json()).then((responseJson) => {
 
-                    groupname = responseJson[0].name
-                    console.log("group name console", groupname)
+                    groupname1 = responseJson
+                    console.log("group name console", groupname1)
 
-                    this.props.onNavigateLogingroupname(groupname)
+                    this.props.onNavigateLoginUser(res,rescountvalue1,grouprating,groupname1)
 
-
+alert("Login Succesfully")
 
 
                 })
-
+            })
+            })
+             
                 //this.props.onNavigateLogingroupname(groupname)
                 //alert(login)
                 // console.log("response", responseJson)
@@ -568,9 +678,9 @@ export default class Login extends RX.Component {
         return (
             <RX.ScrollView style={styles.scroll}>
                 <RX.View style={styles.navcontainer}>
-                    <RX.Image source={'./src/img/rqlogo.png'} style={[styles.navrqlogo]} />
+                    <RX.Image source={'./src/img//RapidQube logo-01.png'} style={[styles.navrqlogo]} />
                     <RX.Text style={styles.navwelcome}>
-                        CAPTIVE INSURANCE
+                        <b>CAPTIVE INSURANCE</b>
                     </RX.Text>
                     <RX.Button style={styles.regbtn} style={{ color: "white", marginTop: -15, marginLeft: 1110 }} onPress={this.props.onNavigateLoginHome} ><b>Registration</b></RX.Button>
                     {/* <RX.Button  style={ styles.loginbtn }><b>Login</b></RX.Button> */}

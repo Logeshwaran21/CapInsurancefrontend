@@ -224,7 +224,7 @@ export default class ProviderDetails extends RX.Component {
             <RX.ScrollView style={styles.scroll}>
                 <RX.View style={styles.navcontainer}>
                     <div>
-                        <RX.Image source={'./src/img/rqlogo.png'} style={[styles.navrqlogo]} />
+                        <RX.Image source={'./src/img//RapidQube logo-01.png'} style={[styles.navrqlogo]} />
                         <RX.Text style={styles.navwelcome}>
                             RAPID SETTLE
                         </RX.Text>

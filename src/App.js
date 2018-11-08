@@ -22,6 +22,9 @@ import Notification from './Notification'
 import CaptivePolicy from './CaptivePolicy'
 import AdminPage from './AdminPage'
 import Userpage from './Userpage'
+import Underwriterpage from './Underwriterpage'
+import UnderwriterNotification from './UnderwriterNotification'
+
 
 
 let NavigationRouteId = {
@@ -41,7 +44,9 @@ let NavigationRouteId = {
     Notification: "Notification",
     CaptivePolicy: "CaptivePolicy",
     AdminPage: "AdminPage",
-    Userpage: "Userpage"
+    Userpage: "Userpage",
+    Underwriterpage:"Underwriterpage",
+    UnderwriterNotification:"UnderwriterNotification"
 };
 
 const styles = {
@@ -71,26 +76,34 @@ export default class App extends RX.Component {
         this._onPressAutoApproval = this._onPressAutoApproval.bind(this);
         this._onPressStatusSettlement = this._onPressStatusSettlement.bind(this);
         this._onPressCreatePolicyRBD = this._onPressCreatePolicyRBD.bind(this);
-        // this._onPressTable = this._onPressTable.bind(this);
+        
         this._onPressWaitingForTPA = this._onPressWaitingForTPA.bind(this);
         this._onPressCreatePolicyWFTPA = this._onPressCreatePolicyWFTPA.bind(this);
         this._onPressCreatePolicylogout = this._onPressCreatePolicylogout.bind(this);
         this._onPressLoginHome = this._onPressLoginHome.bind(this);
         this._onPressLogin = this._onPressLogin.bind(this);
+        this._onPressUnderwriterpagelogin = this._onPressUnderwriterpagelogin.bind(this);
         this._onPressNotification = this._onPressNotification.bind(this);
         this._onPressCaptivePolicy = this._onPressCaptivePolicy.bind(this);
         this._onPresspolicyDetails = this._onPresspolicyDetails.bind(this);
         this._onPressAdminPage = this._onPressAdminPage.bind(this);
         this._onPressAdminpagelogout= this._onPressAdminpagelogout.bind(this);
+        this._onPressUnderwriterpagelogout= this._onPressUnderwriterpagelogout.bind(this);
         this._onPressUserpage = this._onPressUserpage.bind(this);
         this._onPressUserpagelogout = this._onPressUserpagelogout.bind(this);
         this._onPressusernotifylogout = this._onPressusernotifylogout.bind(this);
+        this._onPressusernotifyhome = this._onPressusernotifyhome.bind(this);
         this._onPressadminnotifylogout = this._onPressadminnotifylogout.bind(this);
         this._onPressUsernotify = this._onPressUsernotify.bind(this);
         this._onPressNotifyAdminPage = this._onPressNotifyAdminPage.bind(this);
+        this._onPressNotifyUnderwriter = this._onPressNotifyUnderwriter.bind(this);
         this._onPressLoginUser = this._onPressLoginUser.bind(this);
         this._onPressuserhome = this._onPressuserhome.bind(this);
-
+        this._onPressUnderwriterpage = this._onPressUnderwriterpage.bind(this);
+        this._onPressUnderwriterNotification = this._onPressUnderwriterNotification.bind(this);
+        this._onPressUnderwriterhome = this._onPressUnderwriterhome.bind(this);
+        this._onPressUnderwriterNotificationlogout = this._onPressUnderwriterNotificationlogout.bind(this);
+        
     }
 
     componentDidMount() {
@@ -157,13 +170,13 @@ export default class App extends RX.Component {
                 return <WaitingForTPA onNavigateWaitingForTPA={this._onPressWaitingForTPA} navigatorRoute={navigatorRoute} />
 
             case NavigationRouteId.Login:
-                return <Login onNavigateLogin={this._onPressLogin} onNavigateLoginUser={this._onPressLoginUser} onNavigateLoginHome={this._onPressLoginHome} navigatorRoute={navigatorRoute} />
+                return <Login onNavigateLogin={this._onPressLogin} onNavigateUnderwriterpagelogin={this._onPressUnderwriterpagelogin} onNavigateLoginUser={this._onPressLoginUser} onNavigateLoginHome={this._onPressLoginHome} navigatorRoute={navigatorRoute} />
 
             case NavigationRouteId.Notification:
                 return <Notification onNavigateNotification={this._onPressNotification}  onNavigateadminnotifylogout={this._onPressadminnotifylogout} navigatorRoute={navigatorRoute} />
 
             case NavigationRouteId.CaptivePolicy:
-                return <CaptivePolicy onNavigateCaptivePolicy={this._onPressCaptivePolicy} onNavigateusernotifylogout={this._onPressusernotifylogout} navigatorRoute={navigatorRoute} />
+                return <CaptivePolicy onNavigateCaptivePolicy={this._onPressCaptivePolicy} onNavigateusernotifylogout={this._onPressusernotifylogout} onNavigateusernotifyhome={this._onPressusernotifyhome} navigatorRoute={navigatorRoute} />
 
             case NavigationRouteId.AdminPage:
                 return <AdminPage onNavigateAdminPage={this._onPressAdminPage} onNavigateAdminpagelogout={this._onPressAdminpagelogout} onNavigateNotifyAdminPage={this._onPressNotifyAdminPage} navigatorRoute={navigatorRoute} />
@@ -171,39 +184,66 @@ export default class App extends RX.Component {
             case NavigationRouteId.Userpage:
                 return <Userpage onNavigateUserpage={this._onPressUserpage} onNavigateUsernotify={this._onPressUsernotify} onNavigateUserpagelogout={this._onPressUserpagelogout} navigatorRoute={navigatorRoute} />
 
+            case NavigationRouteId.Underwriterpage:
+                return <Underwriterpage onNavigateUnderwriterpage={this._onPressUnderwriterpage}  onNavigateUnderwriterpagelogout={this._onPressUnderwriterpagelogout} onNavigateNotifyUnderwriter={this._onPressNotifyUnderwriter} navigatorRoute={navigatorRoute} />
 
+            case NavigationRouteId.UnderwriterNotification:
+                return <UnderwriterNotification onNavigateUnderwriterNotification={this._onPressUnderwriterNotification} onNavigateUnderwriterhome={this._onPressUnderwriterhome}  onNavigateUnderwriterNotificationlogout={this._onPressUnderwriterNotificationlogout}  navigatorRoute={navigatorRoute} />    
+                
         }
 
         return null;
     }
-    _onPressLoginUser(res, rescountvalue1) {
+    _onPressLoginUser(res, rescountvalue1,grouprating,groupname1) {
         // this._navigator.pop();
         console.log("app RES", res)
         console.log("app rescountvalue1", rescountvalue1)
- 
+        console.log("app grouprating", grouprating)
+        console.log("app groupname1", groupname1)
+        
         this._navigator.push({
             routeId: NavigationRouteId.Userpage,
             // sceneConfigType: "Fade",
             res: res,
             rescountvalue1: rescountvalue1,
+            grouprating: grouprating,
+            groupname1:groupname1,
             customSceneConfig: {
                 hideShadow: true
             }
         });
     }
-    _onPressNotifyAdminPage(res) {
+    _onPressNotifyAdminPage(arraystatus) {
         // this._navigator.pop();
-        console.log("app RES", res)
+        // console.log("app RES", res)
+        console.log("app arraystatus", arraystatus)
         this._navigator.push({
             routeId: NavigationRouteId.Notification,
             // sceneConfigType: "Fade",
-            res: res,
+            // res: res,
+            arraystatus:arraystatus,
             overflow:"hidden",
             customSceneConfig: {
                 hideShadow: true
             }
         });
     }
+    _onPressNotifyUnderwriter(res,res1) {
+        // this._navigator.pop();
+        console.log("app notify RES", res)
+        console.log("app notify RES1", res1)
+        this._navigator.push({
+            routeId: NavigationRouteId.UnderwriterNotification,
+            // sceneConfigType: "Fade",
+            res: res,
+            res1:res1,
+            overflow:"hidden",
+            customSceneConfig: {
+                hideShadow: true
+            }
+        });
+    }
+
     _onPressUsernotify(res) {
         // this._navigator.pop();
         console.log("app RES user notification", res)
@@ -217,11 +257,29 @@ export default class App extends RX.Component {
             }
         });
     }
-    _onPressUserpage(res) {
+    _onPressUserpage(res, regname) {
+        // this._navigator.pop();
+        console.log("app Bulk data", res)
+        console.log("app Bulk regname", regname)
+ 
+ 
+        this._navigator.push({
+            routeId: NavigationRouteId.CaptivePolicy,
+            // sceneConfigType: "Fade",
+ 
+            res: res,
+            regname: regname,
+            overflow: "hidden",
+            customSceneConfig: {
+                hideShadow: true
+            }
+        });
+    }
+    _onPressUnderwriterpage(res) {
         // this._navigator.pop();
         console.log("app Bulk data", res)
         this._navigator.push({
-            routeId: NavigationRouteId.CaptivePolicy,
+            routeId: NavigationRouteId.UnderwriterNotification,
             // sceneConfigType: "Fade",
             
             res: res,
@@ -231,6 +289,51 @@ export default class App extends RX.Component {
             }
         });
     }
+    _onPressUnderwriterhome(res) {
+        // this._navigator.pop();
+        console.log("app Bulk data", res)
+        this._navigator.push({
+            routeId: NavigationRouteId.Underwriterpage,
+            // sceneConfigType: "Fade",
+            
+            res: res,
+            overflow:"hidden",
+            customSceneConfig: {
+                hideShadow: true
+            }
+        });
+    }
+
+    _onPressUnderwriterNotificationlogout(res) {
+        // this._navigator.pop();
+        console.log("app Bulk data", res)
+        this._navigator.push({
+            routeId: NavigationRouteId.Login,
+            // sceneConfigType: "Fade",
+            
+            res: res,
+            overflow:"hidden",
+            customSceneConfig: {
+                hideShadow: true
+            }
+        });
+    }
+
+    _onPressUnderwriterNotification(res) {
+        // this._navigator.pop();
+        console.log("app notification data", res)
+        this._navigator.push({
+            routeId: NavigationRouteId.UnderwriterNotification,
+            // sceneConfigType: "Fade",
+            
+            res: res,
+            overflow:"hidden",
+            customSceneConfig: {
+                hideShadow: true
+            }
+        });
+    }
+
     _onPressAdminPage(res) {
         // this._navigator.pop();
         console.log("app", res)
@@ -258,6 +361,19 @@ export default class App extends RX.Component {
             }
         });
     }
+    _onPressUnderwriterpagelogout(res) {
+        // this._navigator.pop();
+        console.log("app", res)
+        this._navigator.push({
+            routeId: NavigationRouteId.Login,
+            // sceneConfigType: "Fade",
+            res: res,
+            overflow:"hidden",
+            customSceneConfig: {
+                hideShadow: true
+            }
+        });
+    }
     _onPressusernotifylogout(res) {
         // this._navigator.pop();
         console.log("app", res)
@@ -271,6 +387,21 @@ export default class App extends RX.Component {
             }
         });
     }
+    _onPressusernotifyhome(res) {
+        // this._navigator.pop();
+        console.log("app", res)
+        this._navigator.push({
+            routeId: NavigationRouteId.Userpage,
+            // sceneConfigType: "Fade",
+            res: res,
+            overflow:"hidden",
+            customSceneConfig: {
+                hideShadow: true
+            }
+        });
+    }
+
+
     _onPressadminnotifylogout(res) {
         // this._navigator.pop();
         console.log("app", res)
@@ -286,21 +417,62 @@ export default class App extends RX.Component {
     }
 
 
-    _onPressLogin(res, rescountvalue) {
+    // _onPressLogin(res, rescountvalue) {
+    //     // this._navigator.pop();
+    //     console.log("app", res)
+    //     console.log("APP Count console", rescountvalue)
+    //     this._navigator.push({
+    //         routeId: NavigationRouteId.AdminPage,
+    //         // sceneConfigType: "Fade",
+    //         res: res,
+    //         rescountvalue: rescountvalue,
+    //         overflow:"hidden",
+    //         customSceneConfig: {
+    //             hideShadow: true
+    //         }
+    //     });
+    // }
+
+    _onPressLogin(res, resval, rescountvalue, array) {
         // this._navigator.pop();
         console.log("app", res)
+        console.log("app resval", resval)
         console.log("APP Count console", rescountvalue)
+        console.log("APP array console", array)
+        // console.log("AP console")
         this._navigator.push({
             routeId: NavigationRouteId.AdminPage,
             // sceneConfigType: "Fade",
             res: res,
+            resval: resval,
             rescountvalue: rescountvalue,
+            array: array,
+ 
+            overflow: "hidden",
+            customSceneConfig: {
+                hideShadow: true
+            }
+        });
+    }
+
+    _onPressUnderwriterpagelogin(rescountvalue,res) {
+        // this._navigator.pop();
+        // console.log("app", res)
+        console.log("APP Count console", rescountvalue)
+        console.log("APP res console", res)
+        this._navigator.push({
+            routeId: NavigationRouteId.Underwriterpage,
+            // sceneConfigType: "Fade",
+            // res: res,
+            rescountvalue: rescountvalue,
+            res:res,
             overflow:"hidden",
             customSceneConfig: {
                 hideShadow: true
             }
         });
     }
+
     _onPressLoginHome() {
         // this._navigator.pop();
         this._navigator.push({

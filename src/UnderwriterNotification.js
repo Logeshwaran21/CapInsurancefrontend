@@ -1,6 +1,7 @@
 import React from 'react';
 import RX from 'reactxp';
 import { Nav, View, NavItem, NavDropdown, MenuItem, Grid, Row, Col, Form, FormGroup, ControlLabel, FormControl, label, Visible, Checkbox, lg, xs } from 'react-bootstrap';
+import { Rejected } from 'synctasks';
 
 
 /*const {
@@ -24,16 +25,18 @@ const styles = {
         color: 'white',
         marginTop: '5'
     }),
-    navwelcome3: RX.Styles.createTextStyle({
+    navwelcome2: RX.Styles.createTextStyle({
         fontSize: 15,
-        marginLeft: 982,
-        backgroundColor: 'rgb(8, 37, 103)',
-        // marginTop: -22,
+        marginLeft: 1182,
+        marginTop: -22,
         color: 'white',
-        borderWidth: 1,
-        borderRadius: 8,
-        width:64,
-        textAlign:"center"
+
+    }),
+    navwelcomehome: RX.Styles.createTextStyle({
+        fontSize: 15,
+        marginLeft: 1000,
+        marginTop: -22,
+        color: 'white',
 
     }),
     button1: RX.Styles.createButtonStyle({
@@ -55,7 +58,7 @@ const styles = {
         backgroundColor: 'rgb(8, 37, 103)',
         borderWidth: 1,
         width: 72,
-        height: 5,
+        height: 5, 
         // marginLeft: 1035,
         marginBottom: -23,
         padding: 12,
@@ -77,7 +80,7 @@ const styles = {
     inputtable: RX.Styles.createTextStyle({
 
         width: 119,
-        fontWeight: 100
+        fontWeight:100
 
     }),
     table: RX.Styles.createTextStyle({
@@ -193,43 +196,48 @@ var filterdata
 var updatedList1
 var sortBy
 var desc
-export default class History extends RX.Component {
+export default class Underwriterpage extends RX.Component {
     constructor(props) {
         super(props);
         tparesult = this.props.navigatorRoute.res
-        //tparesult = capres.captivepolicydata
         console.log("Props console:", tparesult)
+        
+        // res1 = this.props.navigatorRoute.res1
+        // console.log("Props console1:", res1)
+// var tparesult=[res+res1]
+// console.log("underwriternotification page:",tparesult)
 
         this.state = {
             search: '',
             initialItems: tparesult,
             items: [],
-
-            tparesult: tparesult
+           
+            tparesult: tparesult,
+            // tparesult1: tparesult1,
 
         };
-        this.sortBy = this.sortBy.bind(this)
+this.sortBy=this.sortBy.bind(this)
         console.log("state console:", tparesult)
 
     }
-
-    sortBy(key) {
-        console.log("test key", key)
+   
+    sortBy(key){
+        console.log("test key",key)
         this.setState({
-
-            tparesult: tparesult.sort()
-
-        })
-        console.log("hiiiii", tparesult)
+            
+        tparesult:tparesult.sort()
+       
+    })
+    console.log("hiiiii",tparesult)
     }
-
-
-    updateSearch(event) {
-
-        this.setState({ search: event.target.value.substr(0, 20) });
-    }
-
-
+    
+    
+        updateSearch(event){
+           
+            this.setState({search:event.target.value.substr(0,20)});
+        }
+    
+    
     //============================SubmitID Filter Start================================
     filterListpolicyid = (event) => {
         var updatedList = this.state.initialItems;
@@ -243,7 +251,7 @@ export default class History extends RX.Component {
         console.log("filter submit updated list", updatedList1)
 
     }
-
+    
 
     //=============================SubmitID filter End========================================
 
@@ -275,7 +283,7 @@ export default class History extends RX.Component {
         console.log("updated list", updatedList1)
 
     }
-    //=============================AGE Filter End==============================
+      //=============================AGE Filter End==============================
 
     //=========================SEX Filter Start===========================
     filterListPremium = (event) => {
@@ -291,7 +299,7 @@ export default class History extends RX.Component {
 
     }
 
-
+    
 
     // filterListPolicyDate = (event) => {
     //     var updatedList = this.state.initialItems;
@@ -358,39 +366,44 @@ export default class History extends RX.Component {
         this.setState({ items: this.state.initialItems })
 
     }
-    handleChange1 = (data, event) => {
+    handleChange1 =   (data, event) => {
         if (event.target.checked == true) {
 
 
-            var policyid = JSON.stringify(data.policyid)
+            var policyid = data.Key
             this.setState({ policyid: policyid })
             console.log("policyid console", policyid)
 
-            var policyName = JSON.stringify(data.policyName)
+            var policyName = data.Record.policyName
             this.setState({ policyName: policyName })
             console.log("policyName console", policyName)
 
-            var policycatagory = JSON.stringify(data.policycatagory)
+            var policycatagory = data.Record.policycatagory
             this.setState({ policycatagory: policycatagory })
             console.log("policycatagory console", policycatagory)
 
-            var rules = JSON.stringify(data.rules)
+            var rules = data.Record.rules
             this.setState({ rules: rules })
             console.log("rules console", rules)
 
-            var policypercentage = JSON.stringify(data.policypercentage)
+            var policypercentage = data.Record.policypercentage
             this.setState({ policypercentage: policypercentage })
             console.log("policypercentage console", policypercentage)
 
-            var inputradio = JSON.stringify(data.inputradio)
+            var inputradio = data.Record.inputradio
             this.setState({ inputradio: inputradio })
             console.log("inputradio console", inputradio)
+
+            var status = Approved
+            this.setState({ status: status })
+            console.log("status console", status)
+
         } else {
-            return alert("Please select atleast one Rule")
+            return alert("Select atleast one Rule")
         }
 
 
-
+      
     }
 
 
@@ -398,7 +411,7 @@ export default class History extends RX.Component {
     //========================Mapping table Start============================
     renderProducts() {
 
-        console.log("hello")
+         console.log("hello")
         // var ldata = this.state.items
         //   console.log("renderproducts console", ldata)
         return this.state.items.map(items => {
@@ -406,30 +419,24 @@ export default class History extends RX.Component {
             //console.log("Map console", items)
             return (
 
-                <tr key={items.Record.policyid}>
-                    {/* <td><input type="Checkbox" ref="check_me"
+                <tr key={items.policyid}>
+                   {/* <td><input type="Checkbox" ref="check_me"
                         onChange={(event) => this.handleChange1(items, event)} /></td> */}
-                    <td>{items.Key}</td>
-                    <td>{items.Record.policyName}</td>
-
-                    <td>{items.Record.policycatagory}</td>
-                    <td>{items.Record.policypercentage}</td>
-                    <td>{items.Record.rules}</td>
+                    {/* <td>{items.Key}</td> */}
+                    <td>{items.registerId}</td>
                    
-                    <td>{items.Record.inputradio}</td>
-                    <td>{items.Record.status}</td>
-                    {/* <td>
-                        <RX.Button
-                       
-                       style={[styles.button2]}
-                        
-                        onPress={() => this.onChangeNotifyApprove()}
-                    >Approve</RX.Button></td>
+                    <td>{items.policyid}</td>
+                    <td>{items.notifiedDate}</td>
+                    <td>{items.companyName}</td>
+                    <td>{items.claimAmount}</td>
+                    {/* <td>{items.status}</td> */}
+                   {/* <td>
+<RX.Button style={[styles.button2]} onPress={() => this.onChangeNotifyApprove()} >Approve</RX.Button></td>
                      <td>
                         <RX.Button
                        
                        style={[styles.button2]}
-                        onPress={this.props.onNavigateNotification}
+                        onPress={() => this.onChangeNotifyReject()}
                     >Reject</RX.Button></td> */}
                 </tr>
 
@@ -441,51 +448,86 @@ export default class History extends RX.Component {
         })
 
     }
-    onChangePost6 = () => {
+
+    onChangeNotifyApprove = () => {
 
 
 
-        console.log("Enter Into the notify create policy")
+        console.log("Enter Into the notify approved status")
         return fetch('http://localhost:8082/notifyApprove', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
-
+ 
             },
-
+ 
             body: JSON.stringify({
+ 
+                policyid: this.state.policyid,
+                policyName: this.state.policyName,
+                policycatagory: this.state.policycatagory,
+                policypercentage: this.state.policypercentage,
+                rules: this.state.rules,
+                inputradio: this.state.inputradio,
+                "status": "Approved"
+ 
+            }),
+        }).then((res) => res.json()).then((responseJson) => {
+ 
+            var res = responseJson;
+            console.log("response", res)
+            var res1 = res.message;
+            // var responseJson = JSON.stringify(res)
+            console.log("response", res1)
+            swal(res1)
+            // console.log("response", res)
+             this.props.onNavigateCaptivePolicy(res)
+ 
+        })
+ 
+    }
 
+    onChangeNotifyReject = () => {
+
+
+
+        console.log("Enter Into the notify Reject status")
+        return fetch('http://localhost:8082/notifyReject', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+ 
+            },
+ 
+            body: JSON.stringify({
+ 
                 "policyid": this.state.policyid,
                 "policyName": this.state.policyName,
                 "policycatagory": this.state.policycatagory,
-                "rules": this.state.rules,
                 "policypercentage": this.state.policypercentage,
+                "rules": this.state.rules,
                 "inputradio": this.state.inputradio,
-                "status": this.state.status,
-
+                "status": "Rejected"
+ 
             }),
         }).then((res) => res.json()).then((responseJson) => {
-
+ 
             var res = responseJson;
             console.log("response", res)
-            var res1 = res.result.message;
-
+            var res1 = res.message;
             // var responseJson = JSON.stringify(res)
-            console.log("Message console", res1)
+            console.log("response", res1)
             swal(res1)
-            // var rescount = res.result.result.count
-            // console.log("Count console notification", rescount)
-            // this.props.onNavigateCaptivePolicy(rescount)
             // console.log("response", res)
-            // this.props.onNavigateCaptivePolicy(res)
-
+             this.props.onNavigateCaptivePolicy(res)
+ 
         }).catch(function () {
             console.log("error");
         });
-
+ 
     }
-
     //============================================Maping Table End================================
 
     componentDidMount() {
@@ -497,7 +539,7 @@ export default class History extends RX.Component {
 
 
         filterdata = this.state.tparesult
-
+        
         return (
 
 
@@ -505,68 +547,70 @@ export default class History extends RX.Component {
                 <RX.View style={styles.navcontainer}>
                     <RX.Image source={'./src/img//RapidQube logo-01.png'} style={[styles.navrqlogo]} />
                     <RX.Text style={styles.navwelcome}>
-                        <b>CAPTIVE INSURANCE</b>
+                    <b>CAPTIVE INSURANCE</b>
                     </RX.Text>
+                    <RX.Button style={styles.navwelcomehome} onPress={this.props.onNavigateUnderwriterhome}>
+                        <b>Home</b>
+                    </RX.Button>
+                    <RX.Button style={styles.navwelcome2} onPress={this.props.onNavigateUnderwriterNotificationlogout}>
+                        <b>Logout</b>
+                    </RX.Button>
                 </RX.View>
 
                 <div class="container">
-                    <h1>User Notification</h1>
-                    <RX.Button
-                       style={styles.navwelcome3}
-
-                       onPress={this.props.onNavigateuserhome}
-                    >Home</RX.Button>
+                    <h1>Received Claim Requests</h1>
+                   
                 </div>
                 <RX.View>
-
+                
                     <Grid>
                         <div className="container">
                             <br />
                             <br />
-
+                          
                             <table className="table" id="myTable" style={styles.table}>
                                 <thead>
                                     <tr class="header" id="row">
-                                        {/* <th>Checkbox:
+                                    {/* <th>Checkbox:
                                       
                                     </th> */}
-                                        <th>Policy ID
+                                        <th>Register ID
                                         {/* <tbody>
                                                 <input type="text" style={styles.inputtable} placeholder="Enter Id" onChange={this.filterListpolicyid} />
                                             </tbody> */}
                                         </th>
-                                        <th>Policy Name
+                                        <th>Policy ID
                                         {/* <tbody>
                                                 <input type="text" style={styles.inputtable} placeholder="Enter Name" onChange={this.filterListPolicyName} />
                                             </tbody> */}
                                         </th>
-
-                                        <th>Policy Category
+                                        
+                                          <th>Notified Date
                                         {/* <tbody>
                                                 <input type="text" style={styles.inputtable} placeholder="Enter Gender" onChange={this.filterListPolicyCategory} />
                                             </tbody> */}
                                         </th>
-                                        <th>Premium %
+                                        <th>Company Name
                                         {/* <tbody>
                                                 <input type="text" style={styles.inputtable} placeholder="Enter Amount" onChange={this.filterListPremium} />
                                             </tbody> */}
                                         </th>
-                                        <th>Payment Rule
+                                        <th>Claim Amount
                                         {/* <tbody>
                                                 <input type="text" style={styles.inputtable} placeholder="Enter Name" onChange={this.filterListPaymentRule} />
                                             </tbody> */}
                                         </th>
-
-                                        <th>Collateral
+                                      
+                                        {/* <th>Collateral */}
                                         {/* <tbody>
                                                 <input type="text" style={styles.inputtable} placeholder="Enter Status" onChange={this.filterListCollateral} />
                                             </tbody> */}
-                                        </th>
-                                        <th>Status
-                                        {/* <tbody>
+                                        {/* </th> */}
+                                        {/* <th>Status
+                                        <tbody>
                                                 <input type="text" style={styles.inputtable} placeholder="Enter Status" onChange={this.filterListStatus} />
-                                            </tbody> */}
-                                        </th>
+                                            </tbody>
+                                        </th> */}
                                     </tr>
                                 </thead>
 

@@ -489,6 +489,7 @@ export default class RegisterPage extends RX.Component{
                 "name": this.state.name,
                 "address": this.state.address,
                 "phoneNumber": this.state.phoneNumber,
+                "groupname":this.state.groupname,
                 "email": this.state.email,
                 "pass": this.state.pass,
                 "repass": this.state.repass,
@@ -517,6 +518,12 @@ export default class RegisterPage extends RX.Component{
         })
     }
 
+
+    onChangegroupname = (value) => {
+        this.setState({ groupname: value });
+ 
+        console.log(this.state.groupname, "groupname");
+    }
 
     onChangename = (value) => {
         this.setState({ name: value });
@@ -604,11 +611,11 @@ export default class RegisterPage extends RX.Component{
         return (
             <RX.ScrollView style={ styles.scroll }>
                 <RX.View style={ styles.navcontainer }>
-                <RX.Image source={ './src/img/rqlogo.png' } style={ [styles.navrqlogo] } />
+                <RX.Image source={ './src/img//RapidQube logo-01.png' } style={ [styles.navrqlogo] } />
                     <RX.Text style={ styles.navwelcome }>
                        <b>CAPTIVE INSURANCE</b>
                     </RX.Text>
-                    <RX.Button style={ styles.regbtn } style={{color:"white",marginTop:-15,marginLeft:934}}  onPress={()=> this.basicDetails()} ><b>Registeration</b></RX.Button>
+                    <RX.Button style={ styles.regbtn } style={{color:"white",marginTop:-15,marginLeft:934}}  onPress={()=> this.basicDetails()} ><b>Registration</b></RX.Button>
                     <RX.Button  style={ styles.loginbtn } onPress={this.props.onNavigateRegisterPage }><b>Login</b></RX.Button>
                 </RX.View>
                
@@ -677,6 +684,14 @@ export default class RegisterPage extends RX.Component{
 
                                                             />
                                                         </div>
+
+<div>
+                                               <label for="inputEmail4" style={{ color: "#494949", fontFamily: "ProximaNova-Regular", fontSize: "14" }} style={styles.siDeText}>Group Name</label>
+
+                                               <RX.TextInput type="password" style={styles.Form} value={this.state.groupname} onChangeText={this.onChangegroupname} placeholder="" />
+
+                                           </div>
+
                                                         <div >
       <label for="inputEmail4"  style={{color:"#494949",fontFamily:"ProximaNova-Regular",fontSize:"14"}} style={styles.siDeText}>Email Id</label>
    

@@ -191,14 +191,14 @@ var desc
 export default class History extends RX.Component {
     constructor(props) {
         super(props);
-        tparesult = this.props.navigatorRoute.res
-        console.log("Props console:", tparesult)
+        var tparesult=this.props.navigatorRoute.arraystatus
+        console.log("Props console:Notification", tparesult)
        
         this.state = {
             search: '',
             initialItems: tparesult,
             items: [],
-           
+            
             tparesult: tparesult
 
         };
@@ -206,6 +206,8 @@ this.sortBy=this.sortBy.bind(this)
         console.log("state console:", tparesult)
 
     }
+
+    
    
     sortBy(key){
         console.log("test key",key)
@@ -225,73 +227,28 @@ this.sortBy=this.sortBy.bind(this)
     
     
     //============================SubmitID Filter Start================================
-    filterListpolicyid = (event) => {
-        var updatedList = this.state.initialItems;
-        console.log("Filter subid console", updatedList)
-        updatedList1 = updatedList.filter(function (item) {
-            return item.policyid.toLowerCase().search(
-                event.target.value.toLowerCase()) !== -1;
-        });
-        this.setState({ items: updatedList1 });
-
-        console.log("filter submit updated list", updatedList1)
-
-    }
-    
-
-    //=============================SubmitID filter End========================================
-
-    //=========================Name Filter Start===========================
-    filterListPolicyName = (event) => {
-        var updatedList = this.state.initialItems;
-        console.log("filterconsole", updatedList)
-        updatedList1 = updatedList.filter(function (item) {
-            return item.policyName.toLowerCase().search(
-                event.target.value.toLowerCase()) !== -1;
-        });
-        this.setState({ items: updatedList1 });
-
-        console.log("updated list", updatedList1)
-
-    }
-    //=============================Name Filter End==============================
-
-    //=========================AGE Filter Start===========================
-    filterListPolicyCategory = (event) => {
-        var updatedList = this.state.initialItems;
-        console.log("filterconsole", updatedList)
-        updatedList1 = updatedList.filter(function (item) {
-            return item.policycatagory.toLowerCase().search(
-                event.target.value.toLowerCase()) !== -1;
-        });
-        this.setState({ items: updatedList1 });
-
-        console.log("updated list", updatedList1)
-
-    }
-      //=============================AGE Filter End==============================
-
-    //=========================SEX Filter Start===========================
-    filterListPremium = (event) => {
-        var updatedList = this.state.initialItems;
-        console.log("filterconsole", updatedList)
-        updatedList1 = updatedList.filter(function (item) {
-            return item.policypercentage.toLowerCase().search(
-                event.target.value.toLowerCase()) !== -1;
-        });
-        this.setState({ items: updatedList1 });
-
-        console.log("updated list", updatedList1)
-
-    }
-
-    
-
-    // filterListPolicyDate = (event) => {
+    // filterListpolicyid = (event) => {
     //     var updatedList = this.state.initialItems;
-    //     console.log("filter policy date", updatedList)
+    //     console.log("Filter subid console", updatedList)
     //     updatedList1 = updatedList.filter(function (item) {
-    //         return item.created_at.toLowerCase().search(
+    //         return item.policyid.toLowerCase().search(
+    //             event.target.value.toLowerCase()) !== -1;
+    //     });
+    //     this.setState({ items: updatedList1 });
+
+    //     console.log("filter submit updated list", updatedList1)
+
+    // }
+    
+
+    // //=============================SubmitID filter End========================================
+
+    // //=========================Name Filter Start===========================
+    // filterListPolicyName = (event) => {
+    //     var updatedList = this.state.initialItems;
+    //     console.log("filterconsole", updatedList)
+    //     updatedList1 = updatedList.filter(function (item) {
+    //         return item.policyName.toLowerCase().search(
     //             event.target.value.toLowerCase()) !== -1;
     //     });
     //     this.setState({ items: updatedList1 });
@@ -299,52 +256,97 @@ this.sortBy=this.sortBy.bind(this)
     //     console.log("updated list", updatedList1)
 
     // }
-    //=============================SEX Filter End==============================
+    // //=============================Name Filter End==============================
 
-    //=========================Reference Doctor Filter Start===========================
-    filterListPaymentRule = (event) => {
-        var updatedList = this.state.initialItems;
-        console.log("filterconsole", updatedList)
-        updatedList1 = updatedList.filter(function (item) {
-            return item.rules.toLowerCase().search(
-                event.target.value.toLowerCase()) !== -1;
-        });
-        this.setState({ items: updatedList1 });
+    // //=========================AGE Filter Start===========================
+    // filterListPolicyCategory = (event) => {
+    //     var updatedList = this.state.initialItems;
+    //     console.log("filterconsole", updatedList)
+    //     updatedList1 = updatedList.filter(function (item) {
+    //         return item.policycatagory.toLowerCase().search(
+    //             event.target.value.toLowerCase()) !== -1;
+    //     });
+    //     this.setState({ items: updatedList1 });
 
-        console.log("updated list", updatedList1)
+    //     console.log("updated list", updatedList1)
 
-    }
-    //=============================Reference Doctor Filter End==============================
+    // }
+    //   //=============================AGE Filter End==============================
 
-    //=========================claimAmount Filter Start===========================
-    filterListCollateral = (event) => {
-        var updatedList = this.state.initialItems;
-        console.log("filterconsole", updatedList)
-        updatedList1 = updatedList.filter(function (item) {
-            return item.inputradio.toLowerCase().search(
-                event.target.value.toLowerCase()) !== -1;
-        });
-        this.setState({ items: updatedList1 });
+    // //=========================SEX Filter Start===========================
+    // filterListPremium = (event) => {
+    //     var updatedList = this.state.initialItems;
+    //     console.log("filterconsole", updatedList)
+    //     updatedList1 = updatedList.filter(function (item) {
+    //         return item.policypercentage.toLowerCase().search(
+    //             event.target.value.toLowerCase()) !== -1;
+    //     });
+    //     this.setState({ items: updatedList1 });
 
-        console.log("updated list", updatedList1)
+    //     console.log("updated list", updatedList1)
 
-    }
-    //=============================claimAmount Filter End==============================
+    // }
+
+    
+
+    // // filterListPolicyDate = (event) => {
+    // //     var updatedList = this.state.initialItems;
+    // //     console.log("filter policy date", updatedList)
+    // //     updatedList1 = updatedList.filter(function (item) {
+    // //         return item.created_at.toLowerCase().search(
+    // //             event.target.value.toLowerCase()) !== -1;
+    // //     });
+    // //     this.setState({ items: updatedList1 });
+
+    // //     console.log("updated list", updatedList1)
+
+    // // }
+    // //=============================SEX Filter End==============================
+
+    // //=========================Reference Doctor Filter Start===========================
+    // filterListPaymentRule = (event) => {
+    //     var updatedList = this.state.initialItems;
+    //     console.log("filterconsole", updatedList)
+    //     updatedList1 = updatedList.filter(function (item) {
+    //         return item.rules.toLowerCase().search(
+    //             event.target.value.toLowerCase()) !== -1;
+    //     });
+    //     this.setState({ items: updatedList1 });
+
+    //     console.log("updated list", updatedList1)
+
+    // }
+    // //=============================Reference Doctor Filter End==============================
+
+    // //=========================claimAmount Filter Start===========================
+    // filterListCollateral = (event) => {
+    //     var updatedList = this.state.initialItems;
+    //     console.log("filterconsole", updatedList)
+    //     updatedList1 = updatedList.filter(function (item) {
+    //         return item.inputradio.toLowerCase().search(
+    //             event.target.value.toLowerCase()) !== -1;
+    //     });
+    //     this.setState({ items: updatedList1 });
+
+    //     console.log("updated list", updatedList1)
+
+    // }
+    // //=============================claimAmount Filter End==============================
 
 
-    //=========================status Filter Start===========================
-    filterListStatus = (event) => {
-        var updatedList = this.state.initialItems;
-        console.log("filterconsole", updatedList)
-        updatedList1 = updatedList.filter(function (item) {
-            return item.status.toLowerCase().search(
-                event.target.value.toLowerCase()) !== -1;
-        });
-        this.setState({ items: updatedList1 });
+    // //=========================status Filter Start===========================
+    // filterListStatus = (event) => {
+    //     var updatedList = this.state.initialItems;
+    //     console.log("filterconsole", updatedList)
+    //     updatedList1 = updatedList.filter(function (item) {
+    //         return item.status.toLowerCase().search(
+    //             event.target.value.toLowerCase()) !== -1;
+    //     });
+    //     this.setState({ items: updatedList1 });
 
-        console.log("updated list", updatedList1)
+    //     console.log("updated list", updatedList1)
 
-    }
+    // }
     //=============================status Filter End==============================
 
     // initial funtion for loading data
@@ -356,33 +358,66 @@ this.sortBy=this.sortBy.bind(this)
         if (event.target.checked == true) {
 
 
-            var policyid = JSON.stringify(data.Key)
+            var policyid = data.policyid
             this.setState({ policyid: policyid })
             console.log("policyid console", policyid)
 
-            var policyName = JSON.stringify(data.Record.policyName)
+            var policyName = data.policyName
             this.setState({ policyName: policyName })
             console.log("policyName console", policyName)
 
-            var policycatagory = JSON.stringify(data.Record.policycatagory)
+            var policycatagory = data.policycatagory
             this.setState({ policycatagory: policycatagory })
             console.log("policycatagory console", policycatagory)
 
-            var rules = JSON.stringify(data.Record.rules)
+            var rules = data.rules
             this.setState({ rules: rules })
             console.log("rules console", rules)
 
-            var policypercentage = JSON.stringify(data.Record.policypercentage)
+            var policypercentage = data.policypercentage
             this.setState({ policypercentage: policypercentage })
             console.log("policypercentage console", policypercentage)
 
-            var inputradio = JSON.stringify(data.Record.inputradio)
+            var inputradio = data.inputradio
             this.setState({ inputradio: inputradio })
             console.log("inputradio console", inputradio)
 
-            // var status = JSON.stringify(data.Record.status)
-            // this.setState({ status: status })
-            // console.log("status console", status)
+            var registername = data.registername
+            this.setState({ registername: registername })
+            console.log("registername console", registername)
+
+            // var Status = JSON.stringify(Status)
+            // this.setState({ Status: Status })
+            // console.log("Status console", Status)
+           
+                //console.log("welcome")
+        
+                // return fetch('http://localhost:8082/retrieveClaim', {
+                //     method: 'POST',
+                //     headers: {
+                //         'Accept': 'application/json',
+                //         'Content-Type': 'application/json'
+        
+                //     },
+        
+                //     body: JSON.stringify({
+        
+                //         "userId": policyid
+        
+                //     }),
+                // }).then((result) => result.json()).then((responseJson) => {
+                //     var res=responseJson
+                //     console.log("notification page approve ",res)
+                //     var message1=responseJson.result.docs
+                //     console.log("Notification page1:",message1)
+                //     var notificationstatus=message1[4].Records.status
+                //     if(notificationstatus=="Approved"){
+                //         disabled =true
+                //     }
+                    
+                //     console.log("Notification page:",notificationstatus)
+
+                // })
 
         } else {
             return alert("Please select atleast one Rule")
@@ -393,7 +428,9 @@ this.sortBy=this.sortBy.bind(this)
     }
 
 
-
+    onClick(itemKey) {
+        this.setState({ itemKey: false});
+    }
     //========================Mapping table Start============================
     renderProducts() {
 
@@ -408,27 +445,33 @@ this.sortBy=this.sortBy.bind(this)
                 <tr key={items.policyid}>
                    <td><input type="Checkbox" ref="check_me"
                         onChange={(event) => this.handleChange1(items, event)} /></td>
-                    <td>{items.Key}</td>
-                    <td>{items.Record.policyName}</td>
+                         <td>{items.registername}</td>
+                    <td>{items.policyid}</td>
+                    <td>{items.policyName}</td>
                    
-                    <td>{items.Record.policycatagory}</td>
-                    <td>{items.Record.policypercentage}</td>
-                    <td>{items.Record.rules}</td>
-                    <td>{items.Record.inputradio}</td>
+                    <td>{items.policycatagory}</td>
+                    <td>{items.policypercentage}</td>
+                    <td>{items.rules}</td>
+                    <td>{items.inputradio}</td>
                     <td>{items.status}</td>
+                   
+                    
                    <td>
                         <RX.Button
                        
                        style={[styles.button2]}
-                        
+                       onClick={item => props.onClick(item)}
+                      
+                    //    onClick="this.disabled=true; this.value='Sending…';"
+                    //disabled={event.target.checked}
                         onPress={() => this.onChangeNotifyApprove()}
                     >Approve</RX.Button></td>
-                     {/* <td>
+                     <td>
                         <RX.Button
                        
                        style={[styles.button2]}
-                        onPress={this.props.onNavigateNotification}
-                    >Reject</RX.Button></td> */}
+                       onPress={() => this.onChangeNotifyReject()}
+                    >Reject</RX.Button></td>
                 </tr>
 
 
@@ -439,6 +482,43 @@ this.sortBy=this.sortBy.bind(this)
         })
 
     }
+    //==========================approve button disable and enable start==============================
+    // approvebutton = () => {
+
+
+
+    //     console.log("Enter Into the notify approved  buttonstatus")
+    //     return fetch('http://localhost:8082/approvebutton', {
+    //         method: 'POST',
+    //         headers: {
+    //             'Accept': 'application/json',
+    //             'Content-Type': 'application/json'
+ 
+    //         },
+ 
+    //         body: JSON.stringify({
+ 
+    //             "status":"Approved",
+    //             // "status": this.state.status
+ 
+    //         }),
+    //     }).then((res) => res.json()).then((responseJson) => {
+ 
+    //          var res = responseJson;
+    //      console.log("response", res)
+    //         // var res1 = res.message;
+    //         // // var responseJson = JSON.stringify(res)
+    //         // console.log("response", res1)
+    //         // swal(res1)
+    //         // // console.log("response", res)
+    //         //  this.props.onNavigateCaptivePolicy(res)
+ 
+    //     }).catch(function () {
+    //         console.log("error");
+    //     });
+ 
+    // }
+    //============================approve button disable and enable end==============================
 
     onChangeNotifyApprove = () => {
 
@@ -461,7 +541,49 @@ this.sortBy=this.sortBy.bind(this)
                 "policypercentage": this.state.policypercentage,
                 "rules": this.state.rules,
                 "inputradio": this.state.inputradio,
-                // "status": this.state.status
+                "registername": this.state.registername,
+ 
+            }),
+        }).then((res) => res.json()).then((responseJson) => {
+ 
+            var res = responseJson;
+            console.log("response-----Approved-->", res)
+            var res1 = res.message;
+            // var responseJson = JSON.stringify(res)
+            console.log("response", res1)
+            swal(res1)
+            // console.log("response", res)
+             this.props.onNavigateCaptivePolicy(res)
+ 
+        }).catch(function () {
+            console.log("error");
+        });
+ 
+    }
+
+    onChangeNotifyReject = () => {
+
+
+
+        console.log("Enter Into the notify approved status")
+        return fetch('http://localhost:8082/notifyReject', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+ 
+            },
+ 
+            body: JSON.stringify({
+ 
+                "policyid": this.state.policyid,
+                "policyName": this.state.policyName,
+                "policycatagory": this.state.policycatagory,
+                "policypercentage": this.state.policypercentage,
+                "rules": this.state.rules,
+                "inputradio": this.state.inputradio,
+                "registername": this.state.registername,
+
  
             }),
         }).then((res) => res.json()).then((responseJson) => {
@@ -523,6 +645,8 @@ this.sortBy=this.sortBy.bind(this)
                                     <th>Checkbox:
                                       
                                     </th>
+                                    <th>Name of Sender
+                                        </th>
                                         <th>Policy ID
                                         {/* <tbody>
                                                 <input type="text" style={styles.inputtable} placeholder="Enter Id" onChange={this.filterListpolicyid} />
@@ -555,11 +679,9 @@ this.sortBy=this.sortBy.bind(this)
                                                 <input type="text" style={styles.inputtable} placeholder="Enter Status" onChange={this.filterListCollateral} />
                                             </tbody> */}
                                         </th>
-                                        {/* <th>Status
-                                        <tbody>
-                                                <input type="text" style={styles.inputtable} placeholder="Enter Status" onChange={this.filterListStatus} />
-                                            </tbody>
-                                        </th> */}
+                                        <th>Status
+                                        </th>
+                                       
                                     </tr>
                                 </thead>
 

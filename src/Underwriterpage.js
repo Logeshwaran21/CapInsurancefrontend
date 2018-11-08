@@ -13,11 +13,6 @@ const styles = {
         alignSelf: 'stretch',
         backgroundColor: '#2a647d0a'
     }),
-    grouprating: RX.Styles.createViewStyle({
-        marginLeft: 778,
-        marginTop: -26,
-        color:"white"
-    }),
     navcontainer: RX.Styles.createViewStyle({
         justifyContent: 'center',
         alignItems: 'center',
@@ -25,7 +20,6 @@ const styles = {
         height: 50,
         padding: 5
     }),
-
     navwelcome: RX.Styles.createTextStyle({
         fontSize: 15,
         marginRight: 1010,
@@ -34,8 +28,8 @@ const styles = {
     }),
     navwelcome1: RX.Styles.createTextStyle({
         fontSize: 15,
-        marginLeft: 997,
-        marginTop: -21,
+        marginLeft: 984,
+        marginTop: -26,
         color: 'white',
 
     }),
@@ -57,6 +51,19 @@ const styles = {
     //     borderRadius: 8,
     //     borderColor: 'rgb(8, 37, 103)',
     // }),
+    button1: RX.Styles.createButtonStyle({
+        backgroundColor: 'rgb(8, 37, 103)',
+        borderWidth: 1,
+        width: 72,
+        height: 5,
+        marginLeft: 430,
+        marginBottom: -23,
+        padding: 12,
+        borderRadius: 8,
+        borderColor: 'rgb(8, 37, 103)',
+        color: "white"
+    }),
+
     subbutton: RX.Styles.createButtonStyle({
         backgroundColor: 'rgb(8, 37, 103)',
         borderWidth: 1,
@@ -383,7 +390,7 @@ const styles = {
 
         backgroundColor: "rgba(8, 8, 8, 0.05)",
         width: 997,
-        height: 460,
+        height: 455,
         marginLeft: 34,
         marginTop: 97
     }),
@@ -816,21 +823,18 @@ const pickerItems2 = [
 export default class CreatePolicy extends RX.Component {
     constructor(props) {
         super(props);
-        registeredname = this.props.navigatorRoute.res
-        console.log("enter into createpolicy", registeredname)
-        rescountvalue1 = this.props.navigatorRoute.rescountvalue1
-        console.log("enter into conut1", rescountvalue1)
-        grouprating = this.props.navigatorRoute.grouprating
-        console.log("enter into grouprating", grouprating)
-        groupname = this.props.navigatorRoute.groupname1
-       console.log("enter into userpage groupname", groupname)
+        res = this.props.navigatorRoute.res
+        console.log("enter into underwriter", res)
+        res1 = this.props.navigatorRoute.res1
+        console.log("enter into underwriter", res1)
+        Count = this.props.navigatorRoute.rescountvalue
+       
         this.state = {
             name: '',
             shareholders: [{ name: '' }],
             selectedValue: "",
-            registeredname: registeredname,
-            grouprating:grouprating,
-            groupname:groupname
+            // registeredname: registeredname,
+            Count: Count
 
         };
         this._translationValue = RX.Animated.createValue(-100);
@@ -843,103 +847,49 @@ export default class CreatePolicy extends RX.Component {
         });
     }
 
+    onChangeUnderwriterNotify = () => {
+        console.log("Underwriter notification frontend")
 
-   
-    
-
-    patientDetails = () => {
-
-        //this.setState({ policyids:false})
-        this.setState({ patientDetails: true })
-        // this.setState({ treatment:false})
-        // this.setState({ packageDetails:false})
-        // this.setState({ claimDetails:false})
-        // this.setState({ tpaApprove:false})
-        this.setState({ userId:false})
-        // this.setState({ userId1:false})
-        // this.setState({ bulkdata:false})
-        // this.setState({ policyandrules:false})
-        this.setState({ policyandrules1:false})
-        // this.setState({ aboutus:false})
-
-    }
-
-    userId = () => {
-
-        //this.setState({ policyids:false})
-        this.setState({ patientDetails: false })
-        // this.setState({ treatment:false})
-        // this.setState({ packageDetails:false})
-        // this.setState({ claimDetails:false})
-        // this.setState({ tpaApprove:false})
-        this.setState({ userId:true})
-        // this.setState({ userId1:false})
-        // this.setState({ bulkdata:false})
-        // this.setState({ policyandrules:false})
-        this.setState({ policyandrules1:false})
-        // this.setState({ aboutus:false})
-
-    }
-
-    policyandrules1 = () => {
-
-        //this.setState({ policyids:false})
-        this.setState({ patientDetails: false })
-        // this.setState({ treatment:false})
-        // this.setState({ packageDetails:false})
-        // this.setState({ claimDetails:false})
-        // this.setState({ tpaApprove:false})
-        this.setState({ userId:true})
-        // this.setState({ userId1:false})
-        // this.setState({ bulkdata:false})
-        // this.setState({ policyandrules:false})
-        this.setState({ policyandrules1:true})
-        // this.setState({ aboutus:false})
-
-    }
-    updatedReport=()=>{
-     
-        this.setState({ updatedReport:true})
-       
-        
-       }
-    onChangePost1 = () => {
-        console.log("Submit claim")
-        return fetch('http://localhost:8082/submitClaim', {
-            method: 'POST',
+      return  fetch('http://localhost:8082/UnderwriterNotification', {
+            method: 'GET',
             headers: {
                 'Accept': 'application/json',
-                'Content-Type': 'application/json',
+                'Content-Type': 'application/json'
 
-            },
-
-            body: JSON.stringify({
-                "companyName": this.state.companyName,
-                "registerId": this.state.registerId,
-                "notifiedDate": this.state.notifiedDate,
-                "DOL": this.state.DOL,
-                "Category": this.state.Category,
-                "DOD": this.state.DOD,
-                "claimAmount": this.state.claimAmount,
-                "policyid": this.state.policyid,
-               
             }
-            ),
+
+
         }).then((result) => result.json()).then((result) => {
-            var res = result.submitID
-            var res1=result
-            // var data = responseJson.result.docs[0].Records.submitID
-             console.log("Submit claim------------>", res);
-            // console.log("logesh------------>", data);
-            var val = "SubmitId: " + res 
+            console.log("Underwriter notify data =======>", result)
+            // var res = result.message[0]
+            var array = []
+            var array1 = []
+            // var res1 = result.message.length
+            console.log("res1 length", result.message.length)
+            console.log(result.message[0].Record.patientData)
+            console.log(result.message[0].Key)
+            // function search(statusKey, result) {
+            for (var i = 0; i < result.message.length; i++) {
+               
+                    console.log("welcome")
+                    array.push(result.message[i].Record.patientData)
+                    console.log("key===>")
+                    array1.push(result.message[i].Key)
+            }
+        //     for (var i = 0; i < result.message.length; i++) {
+               
+        //         console.log("key===>")
+                
+ 
+        // }
+            
 
-
-            swal("Your Submit ID:", val);
-            this.props.onNavigateNotifyUserpageval(res,res1)
-            // var resJson1 = JSON.stringify(res)
-            // console.log(resJson1)
+            this.props.onNavigateNotifyUnderwriter(array,array1)
+           
         })
+
     }
+
 
 
     onChangePost3 = () => {
@@ -964,8 +914,10 @@ export default class CreatePolicy extends RX.Component {
             console.log("testing",res)
             var resJson1 = JSON.stringify(res)
             console.log(resJson1)
+
             var i = responseJson.result.docs.length; 
             console.log("no.of blocks:",i)
+
             var name = res1
             this.setState({ name: name })
 
@@ -1000,7 +952,7 @@ export default class CreatePolicy extends RX.Component {
             var tpastatus = responseJson.result.docs[i-1].Records.status;
             var tpastatus = tpastatus
             this.setState({ tpastatus: tpastatus })
-            console.log("status----------->",tpastatus)
+            console.log("tpa status----------->",tpastatus)
 
             var submitID = responseJson.result.docs[0].Records.submitID;
             var submitID = submitID
@@ -1028,56 +980,6 @@ export default class CreatePolicy extends RX.Component {
 
 
           
-        })
-
-    }
-
-
-    //=======================================Policy select Get Method Start===========================
-    onChangeGetCaptivePolicy = () => {
-        console.log("Going to Captive policy records")
-
-        fetch('http://localhost:8082/getcaptivepolicy', {
-            method: 'GET',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-
-            }
-
-
-        }).then((response) => response.json()).then((responseJson) => {
-
-            var res = responseJson
-            console.log("Captive Result policy ", res)
-            //var res1 = res.result.message
-            //console.log("get captive console")
-            //swal(res1)
-            var bulkdata = res
-            console.log("Create  Captive policy ", bulkdata)
-            // this.props.onNavigateUserpage(bulkdata)
-            var regname = registeredname
-           this.props.onNavigateUserpage(bulkdata, regname)
-        })
-
-    }
-
-    onChangeNotify = () => {
-        console.log("notification")
-
-        fetch('http://localhost:8082/getusernotification', {
-            method: 'GET',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-
-            }
-
-
-        }).then((result) => result.json()).then((result) => {
-            console.log("notify data =======>", result)
-            var res = result.message
-            this.props.onNavigateUsernotify(res,rescountvalue1)
         })
 
     }
@@ -1129,48 +1031,208 @@ export default class CreatePolicy extends RX.Component {
         this.setState({ policyid: value });
         console.log(this.state.policyid, "policyid");
     }
-    //----------------------------------------------------
-    //Treatment-------------------------------------------
-    
 
-    ///=========================policy select get method END=================================
-    renderProducts() {
 
-        console.log("enter in to the map")
-        return this.state.groupname.map(items => {
-            return (
- 
-                <tr>
-                    <td>{items.name}</td>
-                </tr>
-            );
-        })
+    userdetails = () => {
+
+        this.setState({ userdetails: true })
+        // this.setState({ patientDetails: false })
+        // this.setState({ treatment: false })
+        // this.setState({ packageDetails: false })
+        // this.setState({ claimDetails: false })
+        this.setState({ tpaApprove: false })
+        // this.setState({ userId: false })
+        // this.setState({ userId1: false })
+        // this.setState({ bulkdata: false })
+        // this.setState({ policyandrules: false })
+        this.setState({ policyandrules1: false })
+        // this.setState({ aboutus: false })
+
     }
+    tpaApprove = () => {
+
+        this.setState({ userdetails: false })
+        // this.setState({ patientDetails: false })
+        // this.setState({ treatment: false })
+        // this.setState({ packageDetails: false })
+        // this.setState({ claimDetails: false })
+        this.setState({ tpaApprove: true })
+        // this.setState({ userId: false })
+        // this.setState({ userId1: false })
+        // this.setState({ bulkdata: false })
+        // this.setState({ policyandrules: false })
+        this.setState({ policyandrules1: false })
+        // this.setState({ aboutus: false })
+
+    }
+
+    policyandrules1 = () => {
+
+        this.setState({ userdetails: true })
+        // this.setState({ patientDetails: false })
+        // this.setState({ treatment: false })
+        // this.setState({ packageDetails: false })
+        // this.setState({ claimDetails: false })
+        this.setState({ tpaApprove: false })
+        // this.setState({ userId: false })
+        // this.setState({ userId1: false })
+        // this.setState({ bulkdata: false })
+        // this.setState({ policyandrules: false })
+        this.setState({ policyandrules1: true })
+        // this.setState({ aboutus: false })
+
+    }
+
+
+    
+    //==================================Radio Button function start================================
+    setvalue(event) {
+        this.setState({
+            inputradio: event.target.value
+        })
+        console.log(event.target.value);
+    }
+    //===================================Radio Button function END=================================
+    //==============================================Rules creation start========================
+    onChangepolicyName = (value) => {
+        this.setState({ policyName: value });
+        console.log(this.state.policyName, "policyName");
+    }
+
+    onChangepolicycatagory = (value) => {
+        this.setState({ policycatagory: value });
+        console.log(this.state.policycatagory, "policycatagory");
+    }
+    onChangepolicypercentage = (value) => {
+        this.setState({ policypercentage: value });
+        console.log(this.state.policypercentage, "policypercentage");
+    }
+    onChangerules = (value) => {
+        this.setState({ rules: value });
+        console.log(this.state.rules, "rules");
+    }
+    onChangePost = () => {
+
+
+
+        console.log("hiiiiii")
+        return fetch('http://localhost:8082/createpolicycaptive', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+
+            },
+
+            body: JSON.stringify({
+
+                //"policyid": this.state.policyidvalue,
+                "policyName": this.state.policyName,
+                "policycatagory": this.state.policycatagory,
+                "rules": [this.state.rules],
+                "policypercentage": this.state.policypercentage,
+                "inputradio": this.state.inputradio
+
+
+            }),
+        }).then((response) => response.json()).then((responseJson) => {
+console.log("testing",responseJson)
+            var res = responseJson.policyid;
+            // var responseJson = JSON.stringify(res)
+            console.log("policy test", res)
+            swal("Policy created succesfully" + "\n", "Policy Number:" + "" + res)
+            //console.log("response", responseJson)
+
+        }).catch(function () {
+            console.log("error");
+        });
+
+    }
+
+    onChangePost6 = () => {
+       
+
+        
+        console.log("hiiiiii")
+                  return  fetch('http://localhost:8082/autoapproveclaim', {
+                        method: 'POST',
+                        headers: {
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json'
+                            
+                                               },
+                        
+                        body: JSON.stringify({
+   
+                        "submitID":this.state.submitID,
+                        "status":this.state.status,
+                        "message":this.state.message,
+                        "AmountuserHavetopay":this.state.AmountuserHavetopay,
+                        "AmountPayerWouldPay":this.state.AmountPayerWouldPay,
+                      
+                                    
+                                }),
+                                }).then((res) => res.json()).then((responseJson) => {
+                                   
+                                    var res = responseJson;
+                                    var responseJson = JSON.stringify(res)
+                                     
+                                    swal("Details updated",responseJson)
+                                    console.log("response",responseJson)
+    
+                                }).catch(function() {
+                                    console.log("error");
+                                });
+     
+                               }
+                               onChangeuserId2 = (value) => {
+                                this.setState({ submitID: value });
+                                console.log(this.state.submitID, "submitID");
+                               
+                            }
+                            onChangeAmountuserHavetopay = (value) => {
+                                this.setState({ AmountuserHavetopay: value });
+                                console.log(this.state.AmountuserHavetopay, "AmountuserHavetopay");
+                               
+                            }
+                            onChangeAmountPayerWouldPay = (value) => {
+                                this.setState({ AmountPayerWouldPay: value });
+                                console.log(this.state.AmountPayerWouldPay, "AmountPayerWouldPay");
+                              
+                            }
+                            onChangestatus1 = (value) => {
+                                this.setState({ status: value });
+                                console.log(this.state.status, "status");
+                               
+                            }
+                            onChangemessage = (value) => {
+                                this.setState({ message: value });
+                                console.log(this.state.message, "message");
+                             
+                            }
+
+
+    //==============================================Rules creation END========================
     render() {
         return (
             <RX.ScrollView style={styles.scroll}>
                 <RX.View style={styles.navcontainer}>
-                    <RX.Image source={'./src/img//RapidQube logo-01.png'} style={[styles.navrqlogo]} />
+                    <RX.Image source={'./src/img/RapidQube logo-01.png'} style={[styles.navrqlogo]} />
                     <RX.Text style={styles.navwelcome}>
                         <b>CAPTIVE INSURANCE</b>
-                        
                     </RX.Text>
-                    {/* <RX.Text >
-                       
-                    </RX.Text> */}
-                    <button type="button" style={{marginTop:-25,marginLeft:491,background:"rgb(32, 122, 142)"}} class="btn btn-primary" onClick={() => this.onChangeNotify()}>
-                                       <b>Notification</b> <span class="badge badge-light">{rescountvalue1}</span>
+                    <button type="button" style={{marginTop:-27,marginLeft:759,background:"rgb(32, 122, 142)"}}  class="btn btn-primary" onClick={() => this.onChangeUnderwriterNotify()}>
+                                        <b>Notification</b> <span class="badge badge-light" >{Count} </span>
+                                        <span class="sr-only">unread messages </span>
+                                    </button>
+                                    {/* <button type="button" style={{marginTop:-25,marginLeft:759,background:"rgb(32, 122, 142)"}} class="btn btn-primary" onClick={() => this.onChangeNotify()}>
+                                       Notification <span class="badge badge-light">{rescountvalue1}</span>
                                        <span class="sr-only">unread messages</span>
-                                   </button>
-                                   <RX.Text style={styles.grouprating}>
-                    <b>Group rating: {this.state.grouprating}</b>
-                      
-                    </RX.Text>
+                                   </button> */}
                     <RX.Text style={styles.navwelcome1}>
-                   
-                        <b> {this.state.registeredname}</b>
+                        <b> {res}</b>
                     </RX.Text>
-                    <RX.Button style={styles.navwelcome2} onPress={this.props.onNavigateUserpagelogout}>
+                    <RX.Button style={styles.navwelcome2} onPress={this.props.onNavigateUnderwriterpagelogout}>
                         <b>Logout</b>
                     </RX.Button>
                 </RX.View>
@@ -1183,16 +1245,17 @@ export default class CreatePolicy extends RX.Component {
 
                             <div class="container" style={styles.sidenavbar}>
                                 <ul class="nav nav-list accordion">
-                                    <li onClick={() => this.onChangeGetCaptivePolicy()} ><a style={{ color: "white", font: 'ProximaNova-Regular', fontSize: 14 }}><b>Policy Details</b><span class="sr-only">(current)</span></a></li>
+                                    
+                                    {/* <li onClick={() => this.onChangeNotify()} ><a style={{ color: "white", font: 'ProximaNova-Regular', fontSize: 14 }}><b>Notifications</b><span class="sr-only">(current)</span></a></li> */}
+                                  
+                                    <li onClick={() => this.tpaApprove()} ><a style={{ color: "white",font:'ProximaNova-Regular',fontSize:14 }}><b>TPA Approval</b><span class="sr-only">(current)</span></a></li>
+                                    <li class="fa fa-lg fa-globe" onClick={() => this.userdetails()} ><a style={{ color: "white", font: 'ProximaNova-Regular', fontSize: 14 }}><b>User Details</b><span class="sr-only">(current)</span></a></li>
                                     {/* <button type="button" class="btn btn-primary" onClick={() => this.onChangeNotify()}>
-                                       Notification <span class="badge badge-light">{rescountvalue1}</span>
-                                       <span class="sr-only">unread messages</span>
-                                   </button> */}
-                                    <li onClick={() => this.patientDetails()}  ><a style={{ color: "white", font: 'ProximaNova-Regular', fontSize: 14 }}><b>Submit Claim</b></a></li>
-                                    <li onClick={() => this.userId()} ><a style={{ color: "white" ,font:'ProximaNova-Regular',fontSize:14}}><b>Claim Details </b><span class="sr-only">(current)</span></a></li>
-                                    <li ><a style={{ color: "white", font: 'ProximaNova-Regular', fontSize: 14 }}><b>Group Members</b></a>
-                                       <ul><a style={{ color: "white" }}>{this.renderProducts()}</a></ul>
-                                   </li>
+                                        Notification <span class="badge badge-light">{this.state.Count}</span>
+                                        <span class="sr-only">unread messages</span>
+                                    </button> */}
+
+
                                     {/* <ul style={{ color: "white" }} class="second-level-menu">
                                         <li onClick={() => (this.onChangeGetRBPR())}><a style={{ color: "white", font: 'ProximaNova-Regular' }} href="#"><b>All</b></a></li>
                                         <li onClick={() => (this.onChangeAutoapproval())}><a style={{ color: "white", font: 'ProximaNova-Regular' }} href="#"><b>Approved History</b></a></li>
@@ -1205,206 +1268,131 @@ export default class CreatePolicy extends RX.Component {
 
                                 <br></br>
                                 <div class="container" style={styles.divContainer} >
-                                    {this.state.patientDetails ?
-                                        <div>
-                                            <h2 style={{ marginLeft: 300, marginTop: -291 }}><strong>
-                                                Discharge Summary</strong></h2>
+                                   
+                                        {this.state.tpaApprove ?
 
+<div class="jumbotron" style={styles.patientDetails1}>
+    <form>
+        <h3 className="text-center font-weight-bold pt-4 pb-5" style={{ marginTop: -11,marginLeft:-369,fontSize:18,color:"#1f305d" }}><strong>Manual Approval</strong></h3>
+    </form>
+    <br>
+    </br>
+    <form>
+        <div style={{marginTop:39}}>
+            <div>
+                <label for="inputPassword4" style={styles.siDeText1}>Submit ID :</label>
+                </div>
+                    <div style={styles.submitid} >
+                <RX.TextInput
+                    style={styles.Form1}
+                    placeholder=""
+                    value={this.state.submitID}
+                    onChangeText={this.onChangeuserId2}
 
-
-                                            <div class="jumbotron" style={styles.patientDetails}>
-                                                {/* <form>
-                                                    <h3 className="text-center font-weight-bold pt-4 pb-5" style={{ marginTop: -11,fontSize:18, marginLeft:-285 }}><strong>PATIENT DETAILS</strong></h3>
-                                                </form> */}
-                                                {/* <br>
-                                                </br> */}
-                                                <form>
-                                                    <div style={{ marginTop: -25 }}>
-                                                        <div>
-                                                            <label for="inputPassword4" style={{ color: "#494949", fontFamily: "ProximaNova-Regular", fontSize: "14" }} style={styles.siDeText}>Company Name</label>
-                                                            <RX.TextInput
-                                                                style={styles.Form}
-                                                                placeholder=""
-                                                                value={this.state.companyName}
-                                                                onChangeText={this.onChangecompanyName}
-
-                                                            />
-                                                        </div>
-                                                        <div>
-                                                            <label for="inputPassword4" style={{ color: "#494949", fontFamily: "ProximaNova-Regular", fontSize: "14" }} style={styles.siDeText}>Registered ID</label>
-
-
-
-                                                            <RX.TextInput
-                                                                style={styles.Form}
-                                                                placeholder=""
-                                                                value={this.state.registerId}
-                                                                onChangeText={this.onChangeregisterId}
-
-                                                            />
-
-                                                        </div>
-
-
-                                                        <div >
-                                                            <label for="inputPassword4" style={{ color: "#494949", fontFamily: "ProximaNova-Regular", fontSize: "14" }} style={styles.siDeText}>Notified Date</label>
-                                                            {/* <label for="inputPassword4" style={{color:"#494949",fontFamily:"ProximaNova-Regular",fontSize:"14"}} style={styles.siDeText}>Date of Admission</label>
-                                                           
-                                                            <input type="date"  placeholder="" style={{marginLeft:20,width:133}}  value={this.state.DOA} onChangeText={this.onChangeDOA} ></input> */}
-
-                                                            <RX.TextInput
-                                                                type="date"
-                                                                style={styles.Form}
-                                                                placeholder="DD/MM/YYYY"
-                                                                value={this.state.notifiedDate}
-                                                                onChangeText={this.onChangenotifiedDate}
-
-                                                            />
-                                                        </div>
-                                                        <div>
-                                                            {/* <label for="inputPassword4" style={{color:"#494949",fontFamily:"ProximaNova-Regular",fontSize:"14"}} style={styles.siDeText}>Date of Discharge</label>
-                                                           
-                                                           <input type="date" style={{marginLeft:20,width:133}}  value={this.state.DOD} onChangeText={this.onChangeDOD} id="lgFormGroupInput" ></input> */}
-
-                                                            <label for="" style={{ color: "#494949", fontFamily: "ProximaNova-Regular", fontSize: "14" }} style={styles.siDeText}>Date of Loss</label>
-                                                            <RX.TextInput
-                                                                style={styles.Form}
-                                                                placeholder="DD/MM/YYYY"
-                                                                value={this.state.DOL}
-                                                                onChangeText={this.onChangeDOL}
-
-                                                            />
-                                                        </div>
-
-                                                        {/* <div >
-                                                            <label for="inputEmail4" style={{color:"#494949",fontFamily:"ProximaNova-Regular",fontSize:"14"}} style={styles.siDeText}>Age</label>
-
-
-                                                            <RX.TextInput
-                                                                style={styles.Form}
-                                                                placeholder=""
-                                                                value={this.state.AGE}
-                                                                onChangeText={this.onChangeage}
-
-                                                            />
-                                                        </div> */}
-                                                        <div>
-                                                            <label for="" style={{ color: "#494949", fontFamily: "ProximaNova-Regular", fontSize: "14" }} style={styles.siDeText}>Category</label>
-
-
-                                                            <RX.Picker style={styles.picker}
-                                                                items={pickerItems}
-                                                                selectedValue={this.state.Category}
-                                                                onValueChange={this.onChangeCategory}
-                                                            >
-                                                            </RX.Picker>
-                                                            {/* <RX.TextInput
-                                                                style={styles.Form}
-                                                                placeholder=""
-                                                                value={this.state.SEX}
-                                                                onChangeText={this.onChangeSEX}
-
-                                                            /> */}
-
-                                                        </div>
-
-
-
-                                                        {/* </div>
-                                                </form> */}
-
-                                                        {/* <form>
-                                                    <div> */}
-                                                        <br></br>
-                                                        <div>
-                                                            <label for="inputEmail4" style={{ color: "#494949", fontFamily: "ProximaNova-Regular", fontSize: "14" }} style={styles.siDeText}>Description Of Damage</label>
-
-
-                                                            <RX.TextInput
-                                                                style={styles.Form}
-                                                                placeholder=""
-                                                                value={this.state.DOD}
-                                                                onChangeText={this.onChangeDOD}
-
-                                                            />
-                                                        </div>
-
-                                                        <div>
-                                                            <label for="inputEmail4" style={{ color: "#494949", fontFamily: "ProximaNova-Regular", fontSize: "14" }} style={styles.siDeText}>Claim Amount</label>
-
-                                                            <RX.TextInput
-                                                                style={styles.Form}
-                                                                placeholder=""
-                                                                value={this.state.claimAmount}
-                                                                onChangeText={this.onChangeclaimAmount}
-
-                                                            />
-                                                        </div>
-                                                        <div>
-                                                            <label for="inputEmail4" style={{ color: "#494949", fontFamily: "ProximaNova-Regular", fontSize: "14" }} style={styles.siDeText}>Policy ID</label>
-
-                                                            <RX.TextInput
-                                                                style={styles.Form}
-                                                                placeholder=""
-                                                                value={this.state.policyid}
-                                                                onChangeText={this.onChangepolicyid}
-
-                                                            />
-                                                        </div>
-                                                        {/* <div>
-                                                            <label for="inputEmail4" style={{color:"#494949",fontFamily:"ProximaNova-Regular",fontSize:"14"}} style={styles.siDeText}>Medico Legal Certificate</label>
-
-
-                                                            <RX.TextInput
-                                                                style={styles.Form}
-                                                                placeholder=""
-                                                                value={this.state.MLC}
-                                                                onChangeText={this.onChangeMLC}
-
-                                                            />
-
-                                                        </div> */}
-                                                        {/* </div>
-                                                </form> */}
-                                                        {/* <form>
-                                                    <div> */}
-
-                                                    </div>
-
-
-                                                </form>
-
-                                                <RX.Button style={styles.nxtbut} onPress={() => this.onChangePost1()}>
-                                                    {'Submit'}
-
-                                                </RX.Button>
-                                            </div>     </div> : null}
-
-
-{this.state.userId ?
-
-    <div class="col-xs-6 col-sm-3 placeholder">
-    
-        <div class="container" style={{marginTop:20,marginLeft:198}}>
-            
-    
-            <label for="lgFormGroupInput" style={styles.sideText} style={{fontSize:14,color:"#494949"}} class="col-sm-2 col-form-label col-form-label-lg">Enter your Submit ID:</label>
-            <div class="col-sm-10">
-                <RX.TextInput style={styles.InputSelectorCopy} placeholder="" value={this.state.userHistoryDetails} onChangeText={this.onChangeuserId} />
-    
-    
+                />
             </div>
-            <br/>
-            <RX.Button style={styles.subbutton} onPress={() => (this.onChangePost3(), this.policyandrules1())} refs="id" >
-                {'Submit'}
-            </RX.Button>
+
+<br></br>
+
+
+            <div >
+                <label for="inputEmail4" style={styles.siDeText1}>Amount User have to pay :</label>
+               
+               </div>
+                <div style={styles.submitid} >
+
+                <RX.TextInput
+                    style={styles.Form1}
+                    placeholder=""
+                    value={this.state.AmountuserHavetopay}
+                    onChangeText={this.onChangeAmountuserHavetopay}
+
+                />
+            </div>
+            <br></br>
+            <div >
+                <label for="inputPassword4" style={styles.siDeText1}>Amount Payer would pay :</label>
+
+</div>
+<div style={styles.submitid} >
+                <RX.TextInput
+                    style={styles.Form1}
+                    placeholder=""
+                    value={this.state.AmountPayerWouldPay}
+                    onChangeText={this.onChangeAmountPayerWouldPay}
+
+                />
+            </div>
+            <br></br>
+            <div>
+                <label for="inputEmail4" style={styles.siDeText1}>Message :</label>
+</div>
+<div style={styles.submitid} >
+
+                <RX.TextInput
+                    style={styles.Form1}
+                    placeholder=""
+                    value={this.state.message}
+                    onChangeText={this.onChangemessage}
+
+                />
+            </div>
+            <br></br>
+            <div>
+                <label for="inputPassword4" style={styles.siDeText1}>Status :</label>
+
+</div>
+<div style={styles.submitid} >
+
+                {/* <RX.TextInput
+                    style={styles.Form1}
+                    placeholder=""
+                    value={this.state.status1}
+                    onChangeText={this.onChangestatus}
+
+                /> */}
+                <RX.Picker style={{width:235,marginLeft:215,height:31}}
+                items={ pickerItems2 }
+selectedValue={ this.state.status1 }
+onValueChange={ this.onChangestatus1 }
+ />
+
+            </div>
+
+           
         </div>
-        <div>
+
+                            </form>
+<div>
+    <RX.Button style={styles.nxtbut1} onPress={() => this.onChangePost6()} >
+        {'Submit'}
+
+    </RX.Button>
+    </div>   </div> :null}
+
+     {this.state.userdetails ?
+        <div class="col-xs-6 col-sm-3 placeholder">
     
+    <div class="container" style={{marginTop:20,marginLeft:198}}>
+       
+
+        <label for="lgFormGroupInput" style={styles.sideText} style={{fontSize:14,color:"#494949"}} class="col-sm-2 col-form-label col-form-label-lg">Enter your Submit ID:</label>
+        <div class="col-sm-10">
+            <RX.TextInput style={styles.InputSelectorCopy} placeholder="" value={this.state.userHistoryDetails} onChangeText={this.onChangeuserId} />
+
+
         </div>
+        <br/>
+        <RX.Button style={styles.subbutton} onPress={() => (this.onChangePost3(), this.policyandrules1())} refs="id" >
+            {'Submit'}
+        </RX.Button>
+    </div>
+    <div>
+
+    </div>
     
-    </div> : null}
-    
+</div> : null}
+
 {this.state.policyandrules1 ?
 
     <div style={styles.details}>
@@ -1417,19 +1405,19 @@ export default class CreatePolicy extends RX.Component {
            
                 <div class="container" style={{marginLeft:330}}>
                    
-                    <label style={{color:"#494949"}}> Company Name              :</label>  <b> {this.state.name}</b> <br></br>
-                    <label style={{color:"#494949"}}> Registered ID            :   </label><b>{this.state.registerId}</b><br></br>
-                    <label style={{color:"#494949"}}> Notified Date            :  </label> <b> {this.state.notifiedDate}</b> <br></br>
-                    <label style={{color:"#494949"}}> Date of Loss             :   </label><b>{this.state.DOL}</b><br></br>
-                    <label style={{color:"#494949"}}> Category                 :   </label> <b>{this.state.Category}</b><br></br>
-                    <label style={{color:"#494949"}}> Description of Damage    :   </label><b>{this.state.DOD}</b><br></br>                    
-                    <label style={{color:"#494949"}}> Claim Amount             :    </label><b>{this.state.claimAmount}</b><br></br> 
-                    <label style={{color:"#494949"}}> Policy ID                :   </label><b> {this.state.policyid}</b> <br></br>
-                    <label style={{color:"#494949"}}> Claim Status             :   </label><b> {this.state.tpastatus} </b><br></br>                 
-                    <label style={{color:"#494949"}}> Submit ID                :   </label> <b>{this.state.submitID}</b> <br></br>
-                    <label style={{color:"#494949"}}> Amount User have to pay  :  </label> <b> {this.state.AmountuserHavetopay}</b> <br></br>
-                    <label style={{color:"#494949"}}> Amount Payer would pay   :   </label> <b>{this.state.AmountPayerWouldPay}</b> <br></br>
-                    <label style={{color:"#494949"}}> Message                  :  </label><b>  {this.state.message}</b> <br></br>
+                    <label style={{color:"#494949",}}>Company Name             : </label>  <b>   {this.state.name} </b><br></br>
+                    <label style={{color:"#494949"}}> Registered ID            : </label>  <b> {this.state.registerId}  </b><br></br>
+                    <label style={{color:"#494949"}}> Notified Date            : </label>  <b>  {this.state.notifiedDate} </b><br></br>
+                    <label style={{color:"#494949"}}> Date of Loss             :</label>  <b>  {this.state.DOL}  </b><br></br>
+                    <label style={{color:"#494949"}}> Category                 : </label>  <b> {this.state.Category}  </b><br></br>
+                    <label style={{color:"#494949"}}> Description of Damage    :</label>  <b>  {this.state.DOD}  </b><br></br>                    
+                    <label style={{color:"#494949"}}> Claim Amount             :</label>  <b>   {this.state.claimAmount}  </b><br></br> 
+                    <label style={{color:"#494949"}}> Policy ID                : </label>  <b>  {this.state.policyid}  </b> <br></br>
+                    <label style={{color:"#494949"}}> Claim Status             :  </label>  <b> {this.state.tpastatus}  </b> <br></br>                 
+                    <label style={{color:"#494949"}}> Submit ID                :</label>  <b>   {this.state.submitID}  </b> <br></br>
+                    <label style={{color:"#494949"}}> Amount User have to pay  : </label>  <b>  {this.state.AmountuserHavetopay}  </b> <br></br>
+                    <label style={{color:"#494949"}}> Amount Payer would pay   : </label>  <b>  {this.state.AmountPayerWouldPay}  </b> <br></br>
+                    <label style={{color:"#494949"}}> Message                  :</label>  <b>   {this.state.message}  </b> <br></br>
     
     </div>  </form> 
     
@@ -1438,27 +1426,8 @@ export default class CreatePolicy extends RX.Component {
     
       
     </div> : null}
-    {/* {this.state.userId ?
 
-    <div class="col-xs-6 col-sm-3 placeholder">
-    
-        <div class="container" style={{marginTop:20,marginLeft:198}}>
-            <RX.Button style={styles.button1} onPress={() => (this.onChangePost3(), this.policyandrules1())} refs="id" >
-                {'Submit'}
-            </RX.Button>
-    
-            <label for="lgFormGroupInput" style={styles.sideText} style={{fontSize:14,color:"#494949"}} class="col-sm-2 col-form-label col-form-label-lg">Enter User Identification Number:</label>
-            <div class="col-sm-10">
-                <RX.TextInput style={styles.InputSelectorCopy} placeholder="" value={this.state.userHistoryDetails} onChangeText={this.onChangeuserId} />
-    
-    
-            </div>
-        </div>
-        <div>
-    
-        </div>
-    
-    </div> : null} */}
+
 
                                 </div>
                             </div>
