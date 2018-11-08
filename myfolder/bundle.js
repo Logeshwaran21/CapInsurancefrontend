@@ -70543,7 +70543,7 @@ props));_this.
 onChangeloginUser=function(){
 
 console.log("Enter in to the loginUser Function");
-return fetch('http://159.65.148.82:8082/login',{
+return fetch('http://localhost:8082/login',{
 method:'POST',
 headers:{
 'Accept':'application/json',
@@ -70581,7 +70581,7 @@ console.log("login console");
 
 if(res2=="admin@gmail.com"){
 console.log("hitting");
-fetch('http://159.65.148.82:8082/getCount',{
+fetch('http://localhost:8082/getCount',{
 method:'GET'}).
 
 then(function(response){return response.json();}).then(function(responseJson){
@@ -70591,7 +70591,7 @@ var rescountvalue=responseJson.count;
 console.log("policy test",rescountvalue);
 
 
-return fetch('http://159.65.148.82:8082/Notification',{
+return fetch('http://localhost:8082/Notification',{
 method:'GET',
 headers:{
 'Accept':'application/json',
@@ -70605,6 +70605,12 @@ console.log("notify data =======>",result);
 
 
 var array=[];
+if(result.message==null)
+{
+console.log("login sucess");
+}else
+{
+
 
 
 
@@ -70613,17 +70619,17 @@ for(var i=0;i<result.message.length;i++){
 
 
 
-if(console.log("login sucessfully")){
 
-}else result.message[i].Record.status=="Initiated";
-{
+
+
+
 console.log("welcome");
 array.push(result.message[i].Record);
 console.log("login sucessfully");
 
-}
-}
 
+}
+}
 
 
 console.log("===>",array);
@@ -70793,72 +70799,72 @@ event.preventDefault();
 
 {var _this2=this;
 return(
-_react2.default.createElement(_reactxp2.default.ScrollView,{style:styles.scroll,__source:{fileName:_jsxFileName,lineNumber:679}},
-_react2.default.createElement(_reactxp2.default.View,{style:styles.navcontainer,__source:{fileName:_jsxFileName,lineNumber:680}},
-_react2.default.createElement(_reactxp2.default.Image,{source:'./src/img//RapidQube logo-01.png',style:[styles.navrqlogo],__source:{fileName:_jsxFileName,lineNumber:681}}),
-_react2.default.createElement(_reactxp2.default.Text,{style:styles.navwelcome,__source:{fileName:_jsxFileName,lineNumber:682}},
-_react2.default.createElement('b',{__source:{fileName:_jsxFileName,lineNumber:683}},'CAPTIVE INSURANCE')),
+_react2.default.createElement(_reactxp2.default.ScrollView,{style:styles.scroll,__source:{fileName:_jsxFileName,lineNumber:685}},
+_react2.default.createElement(_reactxp2.default.View,{style:styles.navcontainer,__source:{fileName:_jsxFileName,lineNumber:686}},
+_react2.default.createElement(_reactxp2.default.Image,{source:'./src/img//RapidQube logo-01.png',style:[styles.navrqlogo],__source:{fileName:_jsxFileName,lineNumber:687}}),
+_react2.default.createElement(_reactxp2.default.Text,{style:styles.navwelcome,__source:{fileName:_jsxFileName,lineNumber:688}},
+_react2.default.createElement('b',{__source:{fileName:_jsxFileName,lineNumber:689}},'CAPTIVE INSURANCE')),
 
-_react2.default.createElement(_reactxp2.default.Button,{style:styles.regbtn,style:{color:"white",marginTop:-15,marginLeft:1110},onPress:this.props.onNavigateLoginHome,__source:{fileName:_jsxFileName,lineNumber:685}},_react2.default.createElement('b',{__source:{fileName:_jsxFileName,lineNumber:685}},'Registration'))),
-
-
+_react2.default.createElement(_reactxp2.default.Button,{style:styles.regbtn,style:{color:"white",marginTop:-15,marginLeft:1110},onPress:this.props.onNavigateLoginHome,__source:{fileName:_jsxFileName,lineNumber:691}},_react2.default.createElement('b',{__source:{fileName:_jsxFileName,lineNumber:691}},'Registration'))),
 
 
 
 
-_react2.default.createElement(_reactxp2.default.View,{__source:{fileName:_jsxFileName,lineNumber:692}},
-_react2.default.createElement('h3',{style:{marginLeft:948,marginTop:53},__source:{fileName:_jsxFileName,lineNumber:693}},_react2.default.createElement('b',{__source:{fileName:_jsxFileName,lineNumber:693}},'LOGIN')),
-_react2.default.createElement('div',{'class':'container',style:styles.logincontainer,__source:{fileName:_jsxFileName,lineNumber:694}},
-_react2.default.createElement('div',{'class':'row main',__source:{fileName:_jsxFileName,lineNumber:695}},
+
+
+_react2.default.createElement(_reactxp2.default.View,{__source:{fileName:_jsxFileName,lineNumber:698}},
+_react2.default.createElement('h3',{style:{marginLeft:948,marginTop:53},__source:{fileName:_jsxFileName,lineNumber:699}},_react2.default.createElement('b',{__source:{fileName:_jsxFileName,lineNumber:699}},'LOGIN')),
+_react2.default.createElement('div',{'class':'container',style:styles.logincontainer,__source:{fileName:_jsxFileName,lineNumber:700}},
+_react2.default.createElement('div',{'class':'row main',__source:{fileName:_jsxFileName,lineNumber:701}},
 
 
 
-_react2.default.createElement('div',{'class':'main-login main-center',style:{marginLeft:41},__source:{fileName:_jsxFileName,lineNumber:699}},
-_react2.default.createElement('br',{__source:{fileName:_jsxFileName,lineNumber:700}}),
-_react2.default.createElement('br',{__source:{fileName:_jsxFileName,lineNumber:701}}),
-_react2.default.createElement('form',{'class':'',method:'post',action:'#',onSubmit:this.handleSubmit,__source:{fileName:_jsxFileName,lineNumber:702}},
+_react2.default.createElement('div',{'class':'main-login main-center',style:{marginLeft:41},__source:{fileName:_jsxFileName,lineNumber:705}},
+_react2.default.createElement('br',{__source:{fileName:_jsxFileName,lineNumber:706}}),
+_react2.default.createElement('br',{__source:{fileName:_jsxFileName,lineNumber:707}}),
+_react2.default.createElement('form',{'class':'',method:'post',action:'#',onSubmit:this.handleSubmit,__source:{fileName:_jsxFileName,lineNumber:708}},
 
-_react2.default.createElement('div',{'class':'form-group',__source:{fileName:_jsxFileName,lineNumber:704}},
-_react2.default.createElement('label',{'for':'email','class':'cols-sm-2 control-label',__source:{fileName:_jsxFileName,lineNumber:705}},' Email'),
+_react2.default.createElement('div',{'class':'form-group',__source:{fileName:_jsxFileName,lineNumber:710}},
+_react2.default.createElement('label',{'for':'email','class':'cols-sm-2 control-label',__source:{fileName:_jsxFileName,lineNumber:711}},' Email'),
 _react2.default.createElement(_reactBootstrap.FormControl,{
 autoFocus:true,
 type:'email',
 style:{width:333},
 value:this.state.email,
 onChange:this.handleChange,
-placeholder:'Enter Email Id',__source:{fileName:_jsxFileName,lineNumber:706}})),' ',
+placeholder:'Enter Email Id',__source:{fileName:_jsxFileName,lineNumber:712}})),' ',
 
 
 
 
-_react2.default.createElement('br',{__source:{fileName:_jsxFileName,lineNumber:717}}),
+_react2.default.createElement('br',{__source:{fileName:_jsxFileName,lineNumber:723}}),
 
 
 
-_react2.default.createElement('div',{__source:{fileName:_jsxFileName,lineNumber:721}},
-_react2.default.createElement('label',{'for':'password','class':'cols-sm-2 control-label',__source:{fileName:_jsxFileName,lineNumber:722}},'Password'),
+_react2.default.createElement('div',{__source:{fileName:_jsxFileName,lineNumber:727}},
+_react2.default.createElement('label',{'for':'password','class':'cols-sm-2 control-label',__source:{fileName:_jsxFileName,lineNumber:728}},'Password'),
 _react2.default.createElement(_reactBootstrap.FormControl,{
 value:this.state.password,
 onChange:this.handleChange1,
 type:'password',
 style:{width:333},
-placeholder:'Enter password',__source:{fileName:_jsxFileName,lineNumber:723}})),
+placeholder:'Enter password',__source:{fileName:_jsxFileName,lineNumber:729}})),
 
 
 
 
 
 
-_react2.default.createElement('br',{__source:{fileName:_jsxFileName,lineNumber:735}}),
-_react2.default.createElement('br',{__source:{fileName:_jsxFileName,lineNumber:736}}),
-_react2.default.createElement(_reactxp2.default.Button,{style:styles.loginsubmitbtn,onPress:function onPress(){_this2.onChangeloginUser();},__source:{fileName:_jsxFileName,lineNumber:737}},'Login '),' ',_react2.default.createElement('br',{__source:{fileName:_jsxFileName,lineNumber:737}}),' ',_react2.default.createElement('br',{__source:{fileName:_jsxFileName,lineNumber:737}}),
-_react2.default.createElement('div',{'class':'form-group ',__source:{fileName:_jsxFileName,lineNumber:738}},
+_react2.default.createElement('br',{__source:{fileName:_jsxFileName,lineNumber:741}}),
+_react2.default.createElement('br',{__source:{fileName:_jsxFileName,lineNumber:742}}),
+_react2.default.createElement(_reactxp2.default.Button,{style:styles.loginsubmitbtn,onPress:function onPress(){_this2.onChangeloginUser();},__source:{fileName:_jsxFileName,lineNumber:743}},'Login '),' ',_react2.default.createElement('br',{__source:{fileName:_jsxFileName,lineNumber:743}}),' ',_react2.default.createElement('br',{__source:{fileName:_jsxFileName,lineNumber:743}}),
+_react2.default.createElement('div',{'class':'form-group ',__source:{fileName:_jsxFileName,lineNumber:744}},
 
 
-_react2.default.createElement('label',{__source:{fileName:_jsxFileName,lineNumber:741}},
-_react2.default.createElement('input',{type:'checkbox',checked:'checked',name:'remember',__source:{fileName:_jsxFileName,lineNumber:742}}),' Remember me'),
+_react2.default.createElement('label',{__source:{fileName:_jsxFileName,lineNumber:747}},
+_react2.default.createElement('input',{type:'checkbox',checked:'checked',name:'remember',__source:{fileName:_jsxFileName,lineNumber:748}}),' Remember me'),
 
-_react2.default.createElement('span',{'class':'psw',style:{marginLeft:107},__source:{fileName:_jsxFileName,lineNumber:744}},_react2.default.createElement('a',{href:'#',__source:{fileName:_jsxFileName,lineNumber:744}},_react2.default.createElement('b',{__source:{fileName:_jsxFileName,lineNumber:744}},'Forgot password?'))))),'  '))))));
+_react2.default.createElement('span',{'class':'psw',style:{marginLeft:107},__source:{fileName:_jsxFileName,lineNumber:750}},_react2.default.createElement('a',{href:'#',__source:{fileName:_jsxFileName,lineNumber:750}},_react2.default.createElement('b',{__source:{fileName:_jsxFileName,lineNumber:750}},'Forgot password?'))))),'  '))))));
 
 
 

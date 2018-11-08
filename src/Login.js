@@ -426,7 +426,7 @@ export default class Login extends RX.Component {
     onChangeloginUser = () => {
 
         console.log("Enter in to the loginUser Function")
-        return fetch('http://159.65.148.82:8082/login', {
+        return fetch('http://localhost:8082/login', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -464,7 +464,7 @@ export default class Login extends RX.Component {
             // submit();
             if (res2 == "admin@gmail.com") {
                 console.log("hitting")
-                fetch('http://159.65.148.82:8082/getCount', {
+                fetch('http://localhost:8082/getCount', {
                     method: 'GET',
 
                 }).then((response) => response.json()).then((responseJson) => {
@@ -474,7 +474,7 @@ export default class Login extends RX.Component {
                     console.log("policy test", rescountvalue)
                     // swal("Policy created succesfully" + "\n", "Policy Number:" + "" + res1)
                     //console.log("response", responseJson)
-                    return fetch('http://159.65.148.82:8082/Notification', {
+                    return fetch('http://localhost:8082/Notification', {
                         method: 'GET',
                         headers: {
                             'Accept': 'application/json',
@@ -488,25 +488,31 @@ export default class Login extends RX.Component {
                         // var rs1 = result.length
                         // console.log("rs1 length", rs1)
                         var array = []
+                        if(result.message==null)
+                        {
+                            console.log("login sucess")
+                        }
+                        else{
                         // var res1 = result.message.length
-                
+                       //  console.log("res1 length", result.message.length)
                         //console.log(result.message[0].Record.status)
                         // function search(statusKey, result) {
+
                         for (var i = 0; i < result.message.length; i++) {
  
                             //var valuemessage = result.message[i]
  
-                            if (console.log("login sucessfully")) {
+                            // if (console.log("login sucessfully")) {
  
-                            } else (result.message[i].Record.status == "Initiated")
-                            {
+                            // } else (result.message[i].Record.status == "Initiated")
+                           // {
                                 console.log("welcome")
                                 array.push(result.message[i].Record)
                                 console.log("login sucessfully")
  
-                            }
+                           // }
                         }
-                        //}
+                        }
  
  
                         console.log("===>", array)
@@ -522,7 +528,7 @@ export default class Login extends RX.Component {
                         alert(login)
                     })
  
-                    // fetch('http://159.65.148.82:8082/getstatus', {
+                    // fetch('http://localhost:8082/getstatus', {
                     //     method: 'POST',
                     //     headers: {
                     //         'Accept': 'application/json',
