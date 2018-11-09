@@ -70543,7 +70543,7 @@ props));_this.
 onChangeloginUser=function(){
 
 console.log("Enter in to the loginUser Function");
-return fetch('http://localhost:8082/login',{
+return fetch('http://159.65.148.82:8082/login',{
 method:'POST',
 headers:{
 'Accept':'application/json',
@@ -70581,7 +70581,7 @@ console.log("login console");
 
 if(res2=="admin@gmail.com"){
 console.log("hitting");
-fetch('http://localhost:8082/getCount',{
+fetch('http://159.65.148.82:8082/getCount',{
 method:'GET'}).
 
 then(function(response){return response.json();}).then(function(responseJson){
@@ -70591,7 +70591,7 @@ var rescountvalue=responseJson.count;
 console.log("policy test",rescountvalue);
 
 
-return fetch('http://localhost:8082/Notification',{
+return fetch('http://159.65.148.82:8082/Notification',{
 method:'GET',
 headers:{
 'Accept':'application/json',

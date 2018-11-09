@@ -426,7 +426,7 @@ export default class Login extends RX.Component {
     onChangeloginUser = () => {
 
         console.log("Enter in to the loginUser Function")
-        return fetch('http://localhost:8082/login', {
+        return fetch('http://159.65.148.82:8082/login', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -464,7 +464,7 @@ export default class Login extends RX.Component {
             // submit();
             if (res2 == "admin@gmail.com") {
                 console.log("hitting")
-                fetch('http://localhost:8082/getCount', {
+                fetch('http://159.65.148.82:8082/getCount', {
                     method: 'GET',
 
                 }).then((response) => response.json()).then((responseJson) => {
@@ -474,7 +474,7 @@ export default class Login extends RX.Component {
                     console.log("policy test", rescountvalue)
                     // swal("Policy created succesfully" + "\n", "Policy Number:" + "" + res1)
                     //console.log("response", responseJson)
-                    return fetch('http://localhost:8082/Notification', {
+                    return fetch('http://159.65.148.82:8082/Notification', {
                         method: 'GET',
                         headers: {
                             'Accept': 'application/json',
@@ -528,7 +528,7 @@ export default class Login extends RX.Component {
                         alert(login)
                     })
  
-                    // fetch('http://localhost:8082/getstatus', {
+                    // fetch('http://159.65.148.82:8082/getstatus', {
                     //     method: 'POST',
                     //     headers: {
                     //         'Accept': 'application/json',
