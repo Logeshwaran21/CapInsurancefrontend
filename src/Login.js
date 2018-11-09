@@ -528,30 +528,7 @@ export default class Login extends RX.Component {
                         alert(login)
                     })
  
-                    // fetch('http://159.65.148.82:8082/getstatus', {
-                    //     method: 'POST',
-                    //     headers: {
-                    //         'Accept': 'application/json',
-                    //         'Content-Type': 'application/json'
- 
-                    //     },
- 
-                    //     body: JSON.stringify({
- 
-                    //         "status": "Initiated",
-                    //     }),
-                    // }).then((response) => response.json()).then((responseJson) => {
- 
-                    //     status1 = responseJson
-                    //     console.log("group name console", status1)
- 
-                    //     this.props.onNavigateLogin(res, rescountvalue, groupname, status1)
-                    //     alert(login)
-                    // })
-
-                    //window.location = "AdminPage.js";
-                    // this.props.onNavigateLogin(res, rescountvalue, groupname)
-                    // alert(login)
+                    
                 })
 
             } 
